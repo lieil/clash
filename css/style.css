@@ -1,0 +1,98 @@
+body{
+background: url("../img/bg-hogg.png")no-repeat 0px 600px;
+}
+#logo {
+position: absolute;
+height: 73px;
+width: 283px;
+top: 17px;
+left: 17px;
+}
+.maindiv{
+position: absolute;
+height: 600px;
+width: 800px;
+left: 50%;
+top: 50%;
+margin-top: -300px;
+margin-left: -400px;
+/*margin:auto;*/
+}
+.shadow{
+background: #ececf1;
+
+-moz-border-radius: 5px; /* Для Firefox 3 */
+-webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
+border-radius: 5px; /* Для современных браузеров */
+
+box-shadow:  2px 2px 5px 0px #ccc;
+}
+.container {
+position: absolute;
+bottom: 5px;
+border-top: 1px solid #74879d;
+max-height: 100px;
+width: 760px;
+padding: 10px 5px 5px 5px;
+margin: 15px;
+overflow: auto;
+}
+#armyset {
+position: absolute;
+top: 5px;
+height: 400px;
+width: 760px;
+padding: 10px 5px 5px 5px;
+margin: 15px;
+}
+
+#armychoice{
+width:1700px;
+max-height:80px;
+}
+
+.iteminset{
+height:102px;
+max-height:102px;
+width:72px;
+max-width:72px;
+padding:1px;
+display:none;
+margin:0 6px 6px 0;
+box-shadow:  2px 2px 5px 0px #ccc;
+background: #2988c6;
+}
+
+.open{
+display:inline-block;
+}
+
+.closed{
+display:none;
+}
+
+.num{
+max-height:30px;
+color:#555;
+text-align:center;
+margin: 1px;
+background-color: #fff3cd;
+-moz-border-radius: 5px; /* Для Firefox 3 */
+-webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
+border-radius: 5px; /* Для современных браузеров */
+}
+
+.itemtochoose{
+height:72px;
+width:72px;
+padding:1px;
+background: url("../img/bg-army.png") no-repeat;
+display:inline-block;
+margin:0 6px 0 0;
+background-position: 0px -72px;
+}
+
+.itemtochoose:hover{
+cursor: pointer;
+background-position: 0px 0px;
+}

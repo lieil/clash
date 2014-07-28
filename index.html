@@ -8,6 +8,13 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script>
+	function showItemBlock(id){
+	var sd = "s" + id;
+	var elem = document.getElementById(sd);
+	elem.className = elem.className + ' open';
+}
+	</script>
     <style>
 .reset    {margin:0;padding:0;}
 .clear    {clear:both;}
@@ -19,20 +26,66 @@ img        {max-width:100%;}
 header, nav, section, article, aside, footer {display:block;}
 body    {margin:0;padding:0;}
     </style>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
 $(document).ready(function(){
 
 });
-    </script>
+    </script> -->
 </head>
 <body>
-    <header></header>
+    <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
     <nav></nav>
-    <section>
-        <article></article>
-    </section>
-    <aside></aside>
+	<div class="maindiv shadow">
+		<div id="armyset">
+				<div id="s01" class="iteminset"><img src="./img/barbarian.png"/><div class = "num">144</div></div>
+				<div id="s02" class="iteminset"><img src="./img/archer.png"><div class = "num">144</div></div>
+				<div id="s03" class="iteminset"><img src="./img/goblin.png"><div class = "num">144</div></div>
+				<div id="s04" class="iteminset"><img src="./img/giant.png"><div class = "num">144</div></div>
+				<div id="s05" class="iteminset"><img src="./img/balloon.png"><div class = "num">144</div></div>
+				<div id="s06" class="iteminset"><img src="./img/wallbreaker.png"><div class = "num">144</div></div>
+				<div id="s07" class="iteminset"><img src="./img/wizard.png"><div class = "num">144</div></div>
+				<div id="s08" class="iteminset"><img src="./img/healer.png"><div class = "num">144</div></div>
+				<div id="s09" class="iteminset"><img src="./img/dragon.png"><div class = "num">144</div></div>
+				<div id="s10" class="iteminset"><img src="./img/pekka.png"><div class = "num">144</div></div>
+				<div id="s11" class="iteminset"><img src="./img/minion.png"><div class = "num">144</div></div>
+				<div id="s12" class="iteminset"><img src="./img/hogg.png"><div class = "num">144</div></div>
+				<div id="s13" class="iteminset"><img src="./img/valkiry.png"><div class = "num">144</div></div>
+				<div id="s14" class="iteminset"><img src="./img/golem.png"><div class = "num">144</div></div>
+				<div id="s15" class="iteminset"><img src="./img/witch.png"><div class = "num">144</div></div>
+				<div id="s16" class="iteminset"><img src="./img/lightingspell.png"><div class = "num">144</div></div>
+				<div id="s17" class="iteminset"><img src="./img/healingspell.png"><div class = "num">144</div></div>
+				<div id="s18" class="iteminset"><img src="./img/ragespell.png"><div class = "num">144</div></div>
+				<div id="s19" class="iteminset"><img src="./img/jumpspell.png"><div class = "num">144</div></div>
+				<div id="s20" class="iteminset"><img src="./img/freezespell.png"><div class = "num">144</div></div>
+		</div>
+		<div class="container">
+			<div id="armychoice">
+	<!--			<div id="arrowleft" class="arrow"></div>-->
+				<div id="a01" class="itemtochoose" onclick="showItemBlock('01')"><img src="./img/barbarian.png"></div>
+				<div id="a02" class="itemtochoose"><img src="./img/archer.png"></div>
+				<div id="a03" class="itemtochoose"><img src="./img/goblin.png"></div>
+				<div id="a04" class="itemtochoose"><img src="./img/giant.png"></div>
+				<div id="a05" class="itemtochoose"><img src="./img/balloon.png"></div>
+				<div id="a06" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
+				<div id="a07" class="itemtochoose"><img src="./img/wizard.png"></div>
+				<div id="a08" class="itemtochoose"><img src="./img/healer.png"></div>
+				<div id="a09" class="itemtochoose"><img src="./img/dragon.png"></div>
+				<div id="a10" class="itemtochoose"><img src="./img/pekka.png"></div>
+				<div id="a11" class="itemtochoose"><img src="./img/minion.png"></div>
+				<div id="a12" class="itemtochoose"><img src="./img/hogg.png"></div>
+				<div id="a13" class="itemtochoose"><img src="./img/valkiry.png"></div>
+				<div id="a14" class="itemtochoose"><img src="./img/golem.png"></div>
+				<div id="a15" class="itemtochoose"><img src="./img/witch.png"></div>
+				<div id="a16" class="itemtochoose"><img src="./img/lightingspell.png"></div>
+				<div id="a17" class="itemtochoose"><img src="./img/healingspell.png"></div>
+				<div id="a18" class="itemtochoose"><img src="./img/ragespell.png"></div>
+				<div id="a19" class="itemtochoose"><img src="./img/jumpspell.png"></div>
+				<div id="a20" class="itemtochoose"><img src="./img/freezespell.png"></div>
+	<!--			<div id="arrowright" class="arrow"></div>-->
+			</div>
+		</div>
+	</div>
     <footer></footer>
 </body>
 </html>
