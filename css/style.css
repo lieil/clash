@@ -11,16 +11,25 @@ left: 17px;
 .maindiv{
 position: absolute;
 height: 600px;
-width: 800px;
+width: 450px;
 left: 50%;
 top: 50%;
 margin-top: -300px;
 margin-left: -400px;
+background: #ececf1;
+/*margin:auto;*/
+}
+.resultdiv{
+position: absolute;
+height: 600px;
+width: 450px;
+left: 50%;
+top: 50%;
+margin-top: -300px;
+margin-left: 100px;
 /*margin:auto;*/
 }
 .shadow{
-background: #ececf1;
-
 -moz-border-radius: 5px; /* Для Firefox 3 */
 -webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
 border-radius: 5px; /* Для современных браузеров */
@@ -32,7 +41,7 @@ position: absolute;
 bottom: 5px;
 border-top: 1px solid #74879d;
 max-height: 100px;
-width: 760px;
+width: 410px;
 padding: 10px 5px 5px 5px;
 margin: 15px;
 overflow: auto;
@@ -41,7 +50,7 @@ overflow: auto;
 position: absolute;
 top: 5px;
 height: 400px;
-width: 760px;
+width: 440px;
 padding: 10px 5px 5px 5px;
 margin: 15px;
 }
@@ -52,13 +61,14 @@ max-height:80px;
 }
 
 .iteminset{
+position: relative;
 height:102px;
 max-height:102px;
-width:72px;
-max-width:72px;
+width:70px;
+max-width:70px;
 padding:1px;
 display:none;
-margin:0 6px 6px 0;
+margin:0 7px 7px 0;
 box-shadow:  2px 2px 5px 0px #ccc;
 background: #2988c6;
 }
@@ -95,4 +105,23 @@ background-position: 0px -72px;
 .itemtochoose:hover{
 cursor: pointer;
 background-position: 0px 0px;
+}
+
+.cross {
+position: absolute;
+top: -5px;
+right: -5px;
+width: 20px;
+height: 20px;
+-moz-border-radius: 10px; /* Для Firefox 3 */
+-webkit-border-radius: 10px; /* Для Safari 4 и Chrome */
+border-radius: 10px; /* Для современных браузеров */
+background-color: #9e0b0f;
+color: white;
+text-align: center;
+line-height: 100%;
+cursor: pointer;
+}
+.cross:hover {
+background-color: #eb3136;
 }

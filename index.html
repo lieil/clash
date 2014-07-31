@@ -2,19 +2,20 @@
 <html lang="ru">
 <head>
     <title>Fun-script для игры Clash of Clans</title>
-    <meta name="Author"    content="Elena Frolova">
+    <meta name="Author" content="Elena Frolova">
     <meta name="Description" content="в процессе">
     <meta name="Keywords" content="Clash of Clans, игра, армия, расчет, калькулятор">
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script>
+<!--    <script>
 	function showItemBlock(id){
 	var sd = "s" + id;
 	var elem = document.getElementById(sd);
 	elem.className = elem.className + ' open';
 }
-	</script>
+	</script> -->
+	<script type="text/javascript" src="./script/position.js"></script>
     <style>
 .reset    {margin:0;padding:0;}
 .clear    {clear:both;}
@@ -38,39 +39,46 @@ $(document).ready(function(){
     <nav></nav>
 	<div class="maindiv shadow">
 		<div id="armyset">
-				<div id="s01" class="iteminset"><img src="./img/barbarian.png"/><div class = "num">144</div></div>
-				<div id="s02" class="iteminset"><img src="./img/archer.png"><div class = "num">144</div></div>
-				<div id="s03" class="iteminset"><img src="./img/goblin.png"><div class = "num">144</div></div>
-				<div id="s04" class="iteminset"><img src="./img/giant.png"><div class = "num">144</div></div>
-				<div id="s05" class="iteminset"><img src="./img/balloon.png"><div class = "num">144</div></div>
-				<div id="s06" class="iteminset"><img src="./img/wallbreaker.png"><div class = "num">144</div></div>
-				<div id="s07" class="iteminset"><img src="./img/wizard.png"><div class = "num">144</div></div>
-				<div id="s08" class="iteminset"><img src="./img/healer.png"><div class = "num">144</div></div>
-				<div id="s09" class="iteminset"><img src="./img/dragon.png"><div class = "num">144</div></div>
-				<div id="s10" class="iteminset"><img src="./img/pekka.png"><div class = "num">144</div></div>
-				<div id="s11" class="iteminset"><img src="./img/minion.png"><div class = "num">144</div></div>
-				<div id="s12" class="iteminset"><img src="./img/hogg.png"><div class = "num">144</div></div>
-				<div id="s13" class="iteminset"><img src="./img/valkiry.png"><div class = "num">144</div></div>
-				<div id="s14" class="iteminset"><img src="./img/golem.png"><div class = "num">144</div></div>
-				<div id="s15" class="iteminset"><img src="./img/witch.png"><div class = "num">144</div></div>
-				<div id="s16" class="iteminset"><img src="./img/lightingspell.png"><div class = "num">144</div></div>
-				<div id="s17" class="iteminset"><img src="./img/healingspell.png"><div class = "num">144</div></div>
-				<div id="s18" class="iteminset"><img src="./img/ragespell.png"><div class = "num">144</div></div>
-				<div id="s19" class="iteminset"><img src="./img/jumpspell.png"><div class = "num">144</div></div>
-				<div id="s20" class="iteminset"><img src="./img/freezespell.png"><div class = "num">144</div></div>
+				<div id="s1" class="iteminset"><img src="./img/barbarian.png"/>
+					<div class="cross" onclick = unSelectItem('s1')>x</div>
+					<div class="lvl"></div>
+					<div class = "num">144</div>
+				</div>
+				<div id="s2" class="iteminset"><img src="./img/archer.png">
+					<div class = "cross">x</div>
+					<input type="text" class = "num" value=0 size=7 step=1 id="i2"/>
+				</div>
+				<div id="s3" class="iteminset"><img src="./img/goblin.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s4" class="iteminset"><img src="./img/giant.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s5" class="iteminset"><img src="./img/balloon.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s6" class="iteminset"><img src="./img/wallbreaker.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s7" class="iteminset"><img src="./img/wizard.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s8" class="iteminset"><img src="./img/healer.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s9" class="iteminset"><img src="./img/dragon.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s10" class="iteminset"><img src="./img/pekka.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s11" class="iteminset"><img src="./img/minion.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s12" class="iteminset"><img src="./img/hogg.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s13" class="iteminset"><img src="./img/valkiry.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s14" class="iteminset"><img src="./img/golem.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s15" class="iteminset"><img src="./img/witch.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s16" class="iteminset"><img src="./img/lightingspell.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s17" class="iteminset"><img src="./img/healingspell.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s18" class="iteminset"><img src="./img/ragespell.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s19" class="iteminset"><img src="./img/jumpspell.png"><div class = "cross">x</div><div class = "num">144</div></div>
+				<div id="s20" class="iteminset"><img src="./img/freezespell.png"><div class = "cross">x</div><div class = "num">144</div></div>
 		</div>
 		<div class="container">
 			<div id="armychoice">
 	<!--			<div id="arrowleft" class="arrow"></div>-->
-				<div id="a01" class="itemtochoose" onclick="showItemBlock('01')"><img src="./img/barbarian.png"></div>
-				<div id="a02" class="itemtochoose"><img src="./img/archer.png"></div>
-				<div id="a03" class="itemtochoose"><img src="./img/goblin.png"></div>
-				<div id="a04" class="itemtochoose"><img src="./img/giant.png"></div>
-				<div id="a05" class="itemtochoose"><img src="./img/balloon.png"></div>
-				<div id="a06" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
-				<div id="a07" class="itemtochoose"><img src="./img/wizard.png"></div>
-				<div id="a08" class="itemtochoose"><img src="./img/healer.png"></div>
-				<div id="a09" class="itemtochoose"><img src="./img/dragon.png"></div>
+				<div id="a1" class="itemtochoose"><img src="./img/barbarian.png"></div>
+				<div id="a2" class="itemtochoose"><img src="./img/archer.png"></div>
+				<div id="a3" class="itemtochoose"><img src="./img/goblin.png"></div>
+				<div id="a4" class="itemtochoose"><img src="./img/giant.png"></div>
+				<div id="a5" class="itemtochoose"><img src="./img/balloon.png"></div>
+				<div id="a6" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
+				<div id="a7" class="itemtochoose"><img src="./img/wizard.png"></div>
+				<div id="a8" class="itemtochoose"><img src="./img/healer.png"></div>
+				<div id="a9" class="itemtochoose"><img src="./img/dragon.png"></div>
 				<div id="a10" class="itemtochoose"><img src="./img/pekka.png"></div>
 				<div id="a11" class="itemtochoose"><img src="./img/minion.png"></div>
 				<div id="a12" class="itemtochoose"><img src="./img/hogg.png"></div>
@@ -86,6 +94,10 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+	<div class="resultdiv shadow"></div>
     <footer></footer>
+<script>
+setOnclickResponse();
+</script>
 </body>
 </html>
