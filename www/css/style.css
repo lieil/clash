@@ -75,10 +75,12 @@ background: #2988c6;
 
 .open{
 display:inline-block;
+opacity:1;
 }
 
 .closed{
 display:none;
+opacity:0;
 }
 
 .num{

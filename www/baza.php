@@ -137,6 +137,8 @@ $army  = array(
 					'cost' => array (26000,29000,31000,33000,35000),
 					'space' => 0,
 				),
-
 			);
+			
+echo json_encode($selectArmy);
+			
 ?>
