@@ -6,6 +6,7 @@
     <meta name="Description" content="в процессе">
     <meta name="Keywords" content="Clash of Clans, игра, армия, расчет, калькулятор">
     <meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <style>
@@ -19,6 +20,23 @@ img        {max-width:100%;}
 header, nav, section, article, aside, footer {display:block;}
 body    {margin:0;padding:0;}
     </style>
+	<style>
+.lvl {
+left:-12px;
+     position: absolute;
+     bottom: 40px;
+}
+.star {
+     left:12px;
+     height: 10px;
+     position: absolute;
+     background: url("../img/asterix.png") no-repeat left top;
+}
+
+.star:hover{
+     background-position: left bottom;
+}
+     </style>
 <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
 <script type="text/javascript" src="./script/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="./script/position.js"></script>
@@ -26,13 +44,21 @@ body    {margin:0;padding:0;}
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
     <nav></nav>
+	<input type="submit" id="resetbutton" value = "обнулить" onclick = "resetNum()"/><!--Обнулить</div>-->
 	<div class="maindiv shadow">
 		<div id="armyset">
 				<div id="s1" class="iteminset"><img src="./img/barbarian.png"/>
-					<div class="cross">x</div>
-					<div class="lvl"></div>
-					<input class = "num"/>
-				</div>
+                         <div class="cross">x</div>
+                         <div class="lvl">
+                              <div class="star l1" style="width:72px">
+                              <div class="star l2" style="width:60px">
+                              <div class="star l3" style="width:48px">
+                              <div class="star l4" style="width:36px">
+                              <div class="star l5" style="width:24px">
+                              <div class="star l6" style="width:12px"></div></div></div></div></div></div>
+                         </div>
+                         <input class = "num"/>
+                    </div>
 				<div id="s2" class="iteminset"><img src="./img/archer.png">
 					<div class = "cross">x</div>
 					<input class = "num"/>
@@ -45,11 +71,11 @@ body    {margin:0;padding:0;}
 					<div class = "cross">x</div>
 					<input class = "num"/>
 				</div>
-				<div id="s5" class="iteminset"><img src="./img/balloon.png">
+				<div id="s5" class="iteminset"><img src="./img/wallbreaker.png">
 					<div class = "cross">x</div>
 					<input class = "num"/>
 				</div>
-				<div id="s6" class="iteminset"><img src="./img/wallbreaker.png">
+				<div id="s6" class="iteminset"><img src="./img/balloon.png">
 					<div class = "cross">x</div>
 					<input class = "num"/>
 				</div>
@@ -59,6 +85,11 @@ body    {margin:0;padding:0;}
 				</div>
 				<div id="s8" class="iteminset"><img src="./img/healer.png">
 					<div class = "cross">x</div>
+					<div class="lvl">
+                              <div class="star l1" style="width:72px">
+                              <div class="star l2" style="width:60px">
+                              </div></div>
+					</div>
 					<input class = "num"/>
 				</div>
 				<div id="s9" class="iteminset"><img src="./img/dragon.png">
@@ -116,8 +147,8 @@ body    {margin:0;padding:0;}
 				<div id="a2" class="itemtochoose"><img src="./img/archer.png"></div>
 				<div id="a3" class="itemtochoose"><img src="./img/goblin.png"></div>
 				<div id="a4" class="itemtochoose"><img src="./img/giant.png"></div>
-				<div id="a5" class="itemtochoose"><img src="./img/balloon.png"></div>
-				<div id="a6" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
+				<div id="a5" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
+				<div id="a6" class="itemtochoose"><img src="./img/balloon.png"></div>
 				<div id="a7" class="itemtochoose"><img src="./img/wizard.png"></div>
 				<div id="a8" class="itemtochoose"><img src="./img/healer.png"></div>
 				<div id="a9" class="itemtochoose"><img src="./img/dragon.png"></div>
@@ -135,7 +166,7 @@ body    {margin:0;padding:0;}
 			</div>
 		</div>
 	</div>
-	<div class="resultdiv shadow" id="vote_status" onclick = vote()>
+	<div class="resultdiv shadow" id="vote_status" onclick = "vote()">
 	<div id="resultCost" class="result"><span>Цена войска:</span><img src="./img/el-drop.png"/></div>
 	<div id="resultSpace" class="result"><span>Занимает места:</span></div>
 	</div>

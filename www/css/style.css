@@ -8,6 +8,14 @@ width: 283px;
 top: 17px;
 left: 17px;
 }
+#resetbutton{
+position:absolute;
+top: 100px;
+left: 17px;
+height: 15px;
+width: 75px;
+}
+
 .maindiv{
 position: absolute;
 height: 600px;
@@ -127,3 +135,11 @@ cursor: pointer;
 .cross:hover {
 background-color: #eb3136;
 }
+
+.l1{ width:72px}
+.l2{ width:60px}
+.l3{ width:48px}
+.l4{ width:36px}
+.l5{ width:24px}
+.l6{ width:12px}
+
