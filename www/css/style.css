@@ -8,34 +8,35 @@ width: 283px;
 top: 17px;
 left: 17px;
 }
-#resetbutton{
+#resetbutton, #levelbutton{
 position:absolute;
 top: 100px;
 left: 17px;
-height: 15px;
-width: 75px;
+height: 25px;
+width: 100px;
 }
+
+ #levelbutton{
+ top: 150px;
+ }
 
 .maindiv{
 position: absolute;
 height: 600px;
 width: 450px;
 left: 50%;
-top: 50%;
-margin-top: -300px;
 margin-left: -400px;
+top: 100px;
 background: #ececf1;
-/*margin:auto;*/
 }
 .resultdiv{
 position: absolute;
 height: 600px;
 width: 450px;
 left: 50%;
-top: 50%;
-margin-top: -300px;
+top: 100px;
 margin-left: 100px;
-/*margin:auto;*/
+padding-top: 100px;
 }
 .shadow{
 -moz-border-radius: 5px; /* Äëÿ Firefox 3 */
@@ -135,6 +136,26 @@ cursor: pointer;
 .cross:hover {
 background-color: #eb3136;
 }
+
+.lvl, .lvl1 {
+left:-12px;
+     position: absolute;
+     bottom: 40px;
+}
+.star {
+     left:12px;
+     height: 10px;
+     position: absolute;
+     background: url("../img/asterix.png") no-repeat left center;
+}
+
+.star:hover{
+     background-position: left top;
+}
+.activ{
+     background-position: left bottom;
+}
+
 
 .l1{ width:72px}
 .l2{ width:60px}
