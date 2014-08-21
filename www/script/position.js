@@ -96,7 +96,7 @@ $(document).ready(function(){
 	
 });
 
-
+// пересчитываем цену войска и выводим результат в нужные клеточки
 function countArmy(){
 	var result = 0;
 	var resultd = 0;
@@ -104,7 +104,6 @@ function countArmy(){
 	var k,l;
 	$(".num").each(function(){
 		k = parseInt(this.parentNode.id.substr(1,2))-1;
-//			alert("Считаем цену юнита №" + k);
 		l = lvl[k]-1;
 		if(l >= 0){
 			if(set[k].cost !== undefined && set[k].cost != null){
@@ -122,24 +121,20 @@ function countArmy(){
 	$("#resultSpace").html("<span>Занимает места: </span> " + space);
 }
 
-
+// показать блок юнита
 function showItemBlock(elem){
 	var key = "s" + elem.id.substr(1,2);
 	var el = document.getElementById(key);
 	el.className = el.className.replace(" closed", " ") + ' open';
 	numElem = $(el).find(".num");
-//	alert($(el).find(".num").val());
-/*	if ($(numElem).val() == 0){
-		$(numElem).val() = "";
-	}*/
 	numElem.focus();
 }
-
+// спрятать блок юнита
 function hideItemBlock(elem){
 	elem.className = elem.className.replace(" open", " ") + " closed";
 	$(elem).children(".num").val(0);
 }
-// обнуляем численность всех войск не пряча их
+// обнуляем численность всех войск не пряча их блоки
 function resetNum(){
 	$(".num").each(function(){
 		this.value = "";
@@ -147,26 +142,30 @@ function resetNum(){
 	$("#resultCost").html("<span>Цена войска: </span> 0 <img src='./img/el-drop.png'/><br/><span>Цена темного войска: </span> 0 <img src='./img/dark-drop.png'/>");
 	$("#resultSpace").html("<span>Занимает места: </span> 0");
 }
-// тестовая функция - показывает текущие уровни	 войск
-function showLvl(){
-	alert(lvl);
-}
-//
+
+// показать блоки юнитов начиная с уровня limit
 function showArmy(limit){
 	var key=0;
 	$(".iteminset").each(function(){
 	key = parseInt(this.id.substr(1,2))-1;
-//	if()
-	showItemBlock(this);
+	if(lvl[key]>(limit-1)){
+		showItemBlock(this);
+	} else {
+		hideItemBlock(this);
+	}
 	});
 }
+// спрятать все блоки юнитов
 function hideArmy(){
 	$(".iteminset").each(function(){
 		hideItemBlock(this);
 	});
 }
 
+//
 // вспомогательные функции.
+//
+
 // проверка на число
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -181,4 +180,33 @@ function max(a,b){
 	}
 //	a = (a > b) : a ? b;
 	//return a;
+}
+
+// установка cookie options: expires - время действия куки в секундах; path, domain, secure - стандартные действия для кук
+function setCookie(name, value, options) {
+  options = options || {};
+  var expires = options.expires;
+  if (typeof expires == "number" && expires) {
+    var d = new Date();
+    d.setTime(d.getTime() + expires*1000);
+    expires = options.expires = d;
+  }
+  if (expires && expires.toUTCString) {
+    options.expires = expires.toUTCString();
+  }
+   value = encodeURIComponent(value);
+  var updatedCookie = name + "=" + value;
+  for(var propName in options) {
+    updatedCookie += "; " + propName;
+    var propValue = options[propName];   
+    if (propValue !== true) {
+      updatedCookie += "=" + propValue;
+     }
+  }
+  document.cookie = updatedCookie;
+}
+
+// тестовая функция - показывает текущие уровни	 войск
+function showLvl(){
+	alert(lvl);
 }
