@@ -29,8 +29,6 @@ body    {margin:0;padding:0;}
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
     <nav></nav>
-	<input type="submit" id="resetbutton" value = "обнулить" onclick = "resetNum()"/><!--Обнулить</div>-->
-	<input type="submit" id="levelbutton" value = "показать уровни" onclick = "showLvl()"/><!--Обнулить</div>-->
 	<div class="maindiv shadow">
 		<div id="armyset">
 				<div id="s1" class="iteminset"><img src="./img/barbarian.png"/>
@@ -143,6 +141,13 @@ body    {margin:0;padding:0;}
 	<div class = "resultdiv">
 	<div id="resultCost" class="result"><span>Цена войска:</span><img src="./img/el-drop.png"/></div>
 	<div id="resultSpace" class="result"><span>Занимает места:</span></div>
+	<div id="buttons">
+		<input type="submit" id="resetbutton" value = "обнулить" onclick = "resetNum()"/><!--Обнулить>-->
+		<input type="submit" id="levelbutton" value = "показать уровни" onclick = "showLvl()"/><!--Показать массив уровней войск-->
+		<input type="submit" id="myarmybutton" value = "мои войска" onclick = "showArmy(1)"/><!--Открыть войска с уровнем большим, чем n-->
+		<input type="submit" id="allarmybutton" value = "все войска" onclick = "showArmy(0)"/><!--Открыть войска с уровнем большим, чем n-->
+		<input type="submit" id="hidebutton" value = "спрятать" onclick = "hideArmy()"/><!--Открыть войска с уровнем большим, чем n-->
+	</div>
 	</div>
     <footer></footer>
 </body>

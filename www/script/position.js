@@ -34,12 +34,12 @@ $(document).ready(function(){
 	});*/
 
 //устанавливается значение атрибутов для полей ввода численности
-	$(".num").attr({"value":"0", "type":"text", "size":"7", "step":"1"});
+	$(".num").attr({"value":"", "type":"text", "size":"7", "step":"1"});
 	resetNum();
 	$(".num").change(function(){
 		if (!isNumeric($(this).val())){ 
 			alert("Введите число воинов данного типа. Цифрами, пожалуйста!");
-			$(this).val(0);
+			$(this).val("");
 		}
 		countArmy();
 	});
@@ -125,34 +125,45 @@ function countArmy(){
 
 function showItemBlock(elem){
 	var key = "s" + elem.id.substr(1,2);
-	var elem = document.getElementById(key);
-	elem.className = elem.className.replace(" closed", " ") + ' open';
-	numElem = $(elem).find(".num");
-	alert($(elem).find(".num").val());
+	var el = document.getElementById(key);
+	el.className = el.className.replace(" closed", " ") + ' open';
+	numElem = $(el).find(".num");
+//	alert($(el).find(".num").val());
 /*	if ($(numElem).val() == 0){
 		$(numElem).val() = "";
 	}*/
 	numElem.focus();
-
-
-	
 }
 
 function hideItemBlock(elem){
 	elem.className = elem.className.replace(" open", " ") + " closed";
 	$(elem).children(".num").val(0);
 }
-
+// обнуляем численность всех войск не пряча их
 function resetNum(){
 	$(".num").each(function(){
-		this.value = 0;
+		this.value = "";
 	});
 	$("#resultCost").html("<span>Цена войска: </span> 0 <img src='./img/el-drop.png'/><br/><span>Цена темного войска: </span> 0 <img src='./img/dark-drop.png'/>");
 	$("#resultSpace").html("<span>Занимает места: </span> 0");
 }
-	
+// тестовая функция - показывает текущие уровни	 войск
 function showLvl(){
 	alert(lvl);
+}
+//
+function showArmy(limit){
+	var key=0;
+	$(".iteminset").each(function(){
+	key = parseInt(this.id.substr(1,2))-1;
+//	if()
+	showItemBlock(this);
+	});
+}
+function hideArmy(){
+	$(".iteminset").each(function(){
+		hideItemBlock(this);
+	});
 }
 
 // вспомогательные функции.
