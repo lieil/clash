@@ -3,6 +3,7 @@ var maxlvl = []; // максимальные уровни войск
 var lvl = []; //уровни войск посетителя
 var NUMPOSITION = 20; // число типов юнитов в игре
 var	newLvl = 0; //переменная для установки нового уровня юнита
+window.onbeforeunload = saveLvl;
 
 // jQuery 
 $(document).ready(function(){
@@ -25,6 +26,7 @@ $(document).ready(function(){
 
 //получаем данные о индивидуальных настройках с сервера
 //	lvl = [3,4,3,4,4,4,4,2,3,0,1,1,0,0,0,3,4,3,0,0]; //пока так, но как раз здесь должно использоваться jquery
+	loadLvl();
 	if(lvl.length != NUMPOSITION){
 		alert("Ошибка данных!" + lvl.length + ", " + NUMPOSITION);
 		lvl = [];
@@ -49,7 +51,7 @@ $(document).ready(function(){
 		if (maxlvl.length == NUMPOSITION){
 			for(var i = 1; i < NUMPOSITION+1; i++){
 				strLvl = "";
-				for(var k = maxlvl[i-1]; k > 0; k--){
+				for(var k = maxlvl[i-1]; k >= 0; k--){
 					if(k > lvl[i-1]){
 						strLvl = "<div class='star l" + k + "'>" + strLvl + "</div>";
 					} else {
@@ -61,19 +63,17 @@ $(document).ready(function(){
 		} else { 
 			alert ("ошибка загрузки данных об уровне войск");
 		}
-	// при нажатии звездочки устанавливается новый уровень юнита //---- в процессе!
-	
+	// при нажатии звездочки устанавливается новый уровень юнита 
 		$(".star").click(function(){
 		var elem = this;
 			var key = parseInt($(elem).closest(".iteminset").attr("id").substr(1,2))-1;
-			var reg = /(?=\s?)\d(?=\s?)/;
-			var l = parseInt(elem.className.match(reg));
+			var l = parseInt(elem.className.match(/(?=\s?)\d(?=\s?)/));
 			if (newLvl == 0){
 				$(elem).find(".star").removeClass("activ");
 			};
 			newLvl = max(l, newLvl);
 			$(this).addClass("activ");
-			if (l == 1) {
+			if (l == 0) {
 				lvl[key] = newLvl;
 				newLvl = 0;
 			};
@@ -94,7 +94,12 @@ $(document).ready(function(){
 		showItemBlock(this);
 	});
 	
+// ставим подпись
+	$("#sign").html('Жду ваших замечаний и предложений по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
+	
 });
+
+
 
 // пересчитываем цену войска и выводим результат в нужные клеточки
 function countArmy(){
@@ -172,18 +177,18 @@ function saveLvl(){
 		str += lvl[i];
 	}
 	setCookie("levels", str, {expires: 7});
-	alert(document.cookie);
+	window.onbeforeunload = "";
+
+//	alert(document.cookie);
 }
 
 function loadLvl(){
 	var str = getCookie("levels");
-	alert(str);
-/*	if (str != undefined){
-		lvl = str.match(/\d/);
-		alert(lvl);
-	} else {
+	if (str == undefined || str.length != NUMPOSITION){
 		alert("Сохраните свой набор войск");
-	};*/
+	} else {		
+		lvl = str.split("");
+	};
 	
 }
 

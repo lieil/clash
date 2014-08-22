@@ -1,5 +1,9 @@
 body{
 background: url("../img/bg-hogg.png")no-repeat 0px 600px;
+font-family: verdana, arial, sans-serif; 
+font-weight: bold;
+color: #74879d;
+font-size:12px;
 }
 #logo {
 position: absolute;
@@ -12,17 +16,31 @@ left: 17px;
 #buttons{
 position:relative;
 top: 25px;
-left: 17px;
+left: 0px;
 height: 25px;
 width: 100px;
 }
 
-#resetbutton, #levelbutton, #myarmybutton, #allarmybutton, #hidebutton, #savebutton{
+#resetbutton, #levelbutton, #myarmybutton, #allarmybutton, #hidebutton{
 display:block;
 margin-top: 15px;
-
+width: 175px;
 }
 
+#buttonsleft{
+position:relative;
+top: 0px;
+left: -625px;
+height: 25px;
+width: 125px;
+}
+
+#savebutton, #getbutton{
+display:block;
+margin-top: 15px;
+width: 100px;
+height: 25px;
+}
 
 .maindiv{
 position: absolute;
@@ -42,6 +60,12 @@ top: 100px;
 margin-left: 100px;
 padding-top: 100px;
 }
+#sign { 
+	position: relative;
+	top: 300px;
+	width: 400px;
+	height: 50px;
+}
 .shadow{
 -moz-border-radius: 5px; /* Äëÿ Firefox 3 */
 -webkit-border-radius: 5px; /* Äëÿ Safari 4 è Chrome */
@@ -59,6 +83,7 @@ padding: 10px 5px 5px 5px;
 margin: 15px;
 overflow: auto;
 }
+
 #armyset {
 position: absolute;
 top: 5px;
@@ -142,12 +167,12 @@ background-color: #eb3136;
 }
 
 .lvl, .lvl1 {
-left:-12px;
+left:-18px;
      position: absolute;
      bottom: 40px;
 }
 .star {
-     left:12px;
+     left:11px;
      height: 10px;
      position: absolute;
      background: url("../img/asterix.png") no-repeat left center;
@@ -160,11 +185,14 @@ left:-12px;
      background-position: left bottom;
 }
 
-
-.l1{ width:72px}
-.l2{ width:60px}
-.l3{ width:48px}
-.l4{ width:36px}
-.l5{ width:24px}
-.l6{ width:12px}
+.l0{ 
+width: 77px;
+background: none;
+}
+.l1{ width:66px}
+.l2{ width:55px}
+.l3{ width:44px}
+.l4{ width:33px}
+.l5{ width:22px}
+.l6{ width:11px}
 

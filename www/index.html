@@ -139,17 +139,22 @@ body    {margin:0;padding:0;}
 		</div>
 	</div>
 	<div class = "resultdiv">
-	<div id="resultCost" class="result"><span>Цена войска:</span><img src="./img/el-drop.png"/></div>
-	<div id="resultSpace" class="result"><span>Занимает места:</span></div>
-	<div id="buttons">
-		<input type="submit" id="resetbutton" value = "обнулить" onclick = "resetNum()"/><!--Обнулить>-->
- 	<input type="submit" id="savebutton" value = "сохранить настройки войск" onclick = "saveLvl()"/><!--Сохранить уровни войск-->
- 	<input type="submit" id="getbutton" value = "загрузить сохраненные настройки" onclick = "loadLvl()"/><!--Показать массив уровней войск-->
- 	<input type="submit" id="levelbutton" value = "показать уровни войск" onclick = "showLvl()"/><!--Показать массив уровней войск-->
-		<input type="submit" id="myarmybutton" value = "мои войска" onclick = "showArmy(1)"/><!--Открыть войска с уровнем большим, чем n-->
-		<input type="submit" id="allarmybutton" value = "все войска" onclick = "showArmy(0)"/><!--Открыть войска с уровнем большим, чем n-->
-		<input type="submit" id="hidebutton" value = "спрятать" onclick = "hideArmy()"/><!--Открыть войска с уровнем большим, чем n-->
-	</div>
+		<div id="resultCost" class="result"><span>Цена войска:</span><img src="./img/el-drop.png"/></div>
+		<div id="resultSpace" class="result"><span>Занимает места:</span></div>
+		<div id="buttonsleft">
+			<div>Параметры юнитов:</div>
+			<input type="submit" id="savebutton" value = "сохранить" onclick = "saveLvl()"/><!--Сохранить уровни войск-->
+			<input type="submit" id="getbutton" value = "загрузить" onclick = "loadLvl()"/><!--загрузить сохраненные уровни войск-->
+		<!--<input type="submit" id="levelbutton" value = "показать уровни войск" onclick = "showLvl()"/><!--Показать массив уровней войск-->
+
+		</div>
+		<div id="buttons">
+			<input type="submit" id="resetbutton" value = "обнулить численность" onclick = "resetNum()"/><!--Обнулить>-->
+			<input type="submit" id="myarmybutton" value = "показать мои войска" onclick = "showArmy(1)"/><!--Открыть войска с уровнем большим, чем n-->
+			<input type="submit" id="allarmybutton" value = "открыть все войска" onclick = "showArmy(0)"/><!--Открыть войска с уровнем большим, чем n-->
+			<input type="submit" id="hidebutton" value = "спрятать всех" onclick = "hideArmy()"/><!--Открыть войска с уровнем большим, чем n-->
+		</div>
+		<div id="sign">фыв</div>
 	</div>
     <footer></footer>
 </body>
