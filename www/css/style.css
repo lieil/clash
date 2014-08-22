@@ -17,9 +17,9 @@ height: 25px;
 width: 100px;
 }
 
-#resetbutton, #levelbutton, #myarmybutton, #allarmybutton, #hidebutton{
+#resetbutton, #levelbutton, #myarmybutton, #allarmybutton, #hidebutton, #savebutton{
 display:block;
-margin-top: 5px;
+margin-top: 15px;
 
 }
 

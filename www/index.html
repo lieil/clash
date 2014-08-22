@@ -143,7 +143,9 @@ body    {margin:0;padding:0;}
 	<div id="resultSpace" class="result"><span>Занимает места:</span></div>
 	<div id="buttons">
 		<input type="submit" id="resetbutton" value = "обнулить" onclick = "resetNum()"/><!--Обнулить>-->
-<!-- 	<input type="submit" id="levelbutton" value = "показать уровни" onclick = "showLvl()"/><!--Показать массив уровней войск-->
+ 	<input type="submit" id="savebutton" value = "сохранить настройки войск" onclick = "saveLvl()"/><!--Сохранить уровни войск-->
+ 	<input type="submit" id="getbutton" value = "загрузить сохраненные настройки" onclick = "loadLvl()"/><!--Показать массив уровней войск-->
+ 	<input type="submit" id="levelbutton" value = "показать уровни войск" onclick = "showLvl()"/><!--Показать массив уровней войск-->
 		<input type="submit" id="myarmybutton" value = "мои войска" onclick = "showArmy(1)"/><!--Открыть войска с уровнем большим, чем n-->
 		<input type="submit" id="allarmybutton" value = "все войска" onclick = "showArmy(0)"/><!--Открыть войска с уровнем большим, чем n-->
 		<input type="submit" id="hidebutton" value = "спрятать" onclick = "hideArmy()"/><!--Открыть войска с уровнем большим, чем n-->

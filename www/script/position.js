@@ -24,7 +24,7 @@ $(document).ready(function(){
 	});
 
 //получаем данные о индивидуальных настройках с сервера
-	lvl = [3,4,3,4,4,4,4,2,3,0,1,1,0,0,0,3,4,3,0,0]; //пока так, но как раз здесь должно использоваться jquery
+//	lvl = [3,4,3,4,4,4,4,2,3,0,1,1,0,0,0,3,4,3,0,0]; //пока так, но как раз здесь должно использоваться jquery
 	if(lvl.length != NUMPOSITION){
 		alert("Ошибка данных!" + lvl.length + ", " + NUMPOSITION);
 		lvl = [];
@@ -132,7 +132,7 @@ function showItemBlock(elem){
 // спрятать блок юнита
 function hideItemBlock(elem){
 	elem.className = elem.className.replace(" open", " ") + " closed";
-	$(elem).children(".num").val(0);
+	$(elem).children(".num").val("");
 }
 // обнуляем численность всех войск не пряча их блоки
 function resetNum(){
@@ -162,6 +162,31 @@ function hideArmy(){
 	});
 }
 
+function saveLvl(){
+	var str = "";
+	for(i=0; i<NUMPOSITION; i++){
+	
+		if(!isNumeric(lvl[i])|| lvl[i]<0 || lvl[i]>10){
+			lvl[i] = 0;
+		}
+		str += lvl[i];
+	}
+	setCookie("levels", str, {expires: 7});
+	alert(document.cookie);
+}
+
+function loadLvl(){
+	var str = getCookie("levels");
+	alert(str);
+/*	if (str != undefined){
+		lvl = str.match(/\d/);
+		alert(lvl);
+	} else {
+		alert("Сохраните свой набор войск");
+	};*/
+	
+}
+
 //
 // вспомогательные функции.
 //
@@ -173,22 +198,16 @@ function isNumeric(n) {
 
 // вычисление максимального значения
 function max(a,b){
-	if(a > b) { 
-		return a;
-	} else {
-		return b;
-	}
-//	a = (a > b) : a ? b;
-	//return a;
+	return ((a > b) ? a : b);
 }
 
-// установка cookie options: expires - время действия куки в секундах; path, domain, secure - стандартные действия для кук
+// установка cookie options: expires - время действия куки в днях; path, domain, secure - стандартные действия для кук
 function setCookie(name, value, options) {
   options = options || {};
   var expires = options.expires;
   if (typeof expires == "number" && expires) {
     var d = new Date();
-    d.setTime(d.getTime() + expires*1000);
+    d.setDate(d.getDate() + expires);
     expires = options.expires = d;
   }
   if (expires && expires.toUTCString) {
@@ -205,6 +224,15 @@ function setCookie(name, value, options) {
   }
   document.cookie = updatedCookie;
 }
+
+//чтение  cookie
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 
 // тестовая функция - показывает текущие уровни	 войск
 function showLvl(){
