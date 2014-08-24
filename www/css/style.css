@@ -22,9 +22,13 @@ width: 100px;
 }
 
 #resetbutton, #levelbutton, #myarmybutton, #allarmybutton, #hidebutton{
-display:block;
+display: block;
 margin-top: 15px;
 width: 175px;
+}
+
+#myarmybutton, #savebutton, #getbutton{
+display: none;
 }
 
 #buttonsleft{
@@ -36,7 +40,6 @@ width: 125px;
 }
 
 #savebutton, #getbutton{
-display:block;
 margin-top: 15px;
 width: 100px;
 height: 25px;
@@ -51,6 +54,30 @@ margin-left: -400px;
 top: 100px;
 background: #ececf1;
 }
+
+#rules{
+position: relative;
+top:0px;
+left: 0px;
+margin: 25px;
+font-weight: normal;
+height: 430px;
+overflow-y: auto;
+z-index:10;
+}
+h1{
+font-size:18px;
+}
+p span{
+padding: 0px 3px;
+border: 1px solid #74879d;
+-moz-border-radius: 5px; /* Для Firefox 3 */
+-webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
+border-radius: 5px; /* Для современных браузеров */
+background-color: #dde;
+}
+
+
 .resultdiv{
 position: absolute;
 height: 600px;
@@ -60,12 +87,18 @@ top: 100px;
 margin-left: 100px;
 padding-top: 100px;
 }
-#sign { 
-	position: relative;
-	top: 300px;
-	width: 400px;
-	height: 50px;
+#signdiv {
+position: absolute;
+bottom: 0px; 
+left:  750px;
+margin-top: 50px;
+
+} 
+
+#metr{
+	margin-top: 20px;
 }
+
 .shadow{
 -moz-border-radius: 5px; /* Для Firefox 3 */
 -webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
@@ -126,6 +159,7 @@ max-height:30px;
 color:#555;
 text-align:center;
 margin: 1px;
+width: 62px;
 background-color: #fff3cd;
 -moz-border-radius: 5px; /* Для Firefox 3 */
 -webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
@@ -166,7 +200,7 @@ cursor: pointer;
 background-color: #eb3136;
 }
 
-.lvl, .lvl1 {
+.lvl{
 left:-18px;
      position: absolute;
      bottom: 40px;

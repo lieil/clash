@@ -7,7 +7,7 @@ window.onbeforeunload = saveLvl;
 
 // jQuery 
 $(document).ready(function(){
-//получаем данные о войске с сервера 
+// получаем данные о войске с сервера 
 // все эти данные будут загружаться через php при динамическом формировании страницы, и тогда не нужны будут запаздывания
 	$.get("baza.php",  function(data){
 //		$("#resultCost").html(data);
@@ -19,18 +19,14 @@ $(document).ready(function(){
 				} else if (set[i].costd){
 					maxlvl[i] = set[i].costd.length;
 				} else {
-					alert("Ой, уровень какой-то непонятный...");
+//					alert("Ой, уровень какой-то непонятный...");
 				}
 		}
 	});
 
-//получаем данные о индивидуальных настройках с сервера
+//получаем данные об индивидуальных настройках с сервера (пока только из куки)
 //	lvl = [3,4,3,4,4,4,4,2,3,0,1,1,0,0,0,3,4,3,0,0]; //пока так, но как раз здесь должно использоваться jquery
-	loadLvl();
-	if(lvl.length != NUMPOSITION){
-		alert("Ошибка данных!" + lvl.length + ", " + NUMPOSITION);
-		lvl = [];
-		}
+	loadLvl(); 
 /*	$.get("member.php", function(data){
 		
 	});*/
@@ -61,23 +57,10 @@ $(document).ready(function(){
 			$("#s"+i).children(".lvl").html(strLvl);
 			}
 		} else { 
-			alert ("ошибка загрузки данных об уровне войск");
+//			alert ("ошибка загрузки данных об уровне войск");
 		}
 	// при нажатии звездочки устанавливается новый уровень юнита 
-		$(".star").click(function(){
-		var elem = this;
-			var key = parseInt($(elem).closest(".iteminset").attr("id").substr(1,2))-1;
-			var l = parseInt(elem.className.match(/(?=\s?)\d(?=\s?)/));
-			if (newLvl == 0){
-				$(elem).find(".star").removeClass("activ");
-			};
-			newLvl = max(l, newLvl);
-			$(this).addClass("activ");
-			if (l == 0) {
-				lvl[key] = newLvl;
-				newLvl = 0;
-			};
-		});	
+		$(".star").click(setLvl);
 	},1000);
 
 
@@ -116,7 +99,7 @@ function countArmy(){
 			} else if (set[k].costd){
 				resultd += (set[k].costd[l])*($(this).val());
 			} else {
-				alert("Ой, цены какие-то странные...");
+//				alert("Ой, цены какие-то странные...");
 			}
 		}
 		space += (set[k].space)*($(this).val());
@@ -130,6 +113,7 @@ function countArmy(){
 function showItemBlock(elem){
 	var key = "s" + elem.id.substr(1,2);
 	var el = document.getElementById(key);
+	document.getElementById("rules").style.display = "none";
 	el.className = el.className.replace(" closed", " ") + ' open';
 	numElem = $(el).find(".num");
 	numElem.focus();
@@ -165,6 +149,24 @@ function hideArmy(){
 	$(".iteminset").each(function(){
 		hideItemBlock(this);
 	});
+	document.getElementById("rules").style.display = "block";
+}
+
+function setLvl(){
+		var elem = this;
+			var key = parseInt($(elem).closest(".iteminset").attr("id").substr(1,2))-1;
+			var l = parseInt(elem.className.match(/(?=\s?)\d(?=\s?)/));
+			if (newLvl == 0){
+				$(elem).find(".star").removeClass("activ");
+			};
+			newLvl = max(l, newLvl);
+			$(this).addClass("activ");
+			if (l == 0) {
+				lvl[key] = newLvl;
+				newLvl = 0;
+			};
+		countArmy();		
+		document.getElementById("savebutton").style.display = "block";
 }
 
 function saveLvl(){
@@ -178,6 +180,9 @@ function saveLvl(){
 	}
 	setCookie("levels", str, {expires: 7});
 	window.onbeforeunload = "";
+	document.getElementById("getbutton").style.display = "block";
+	document.getElementById("myarmybutton").style.display = "block";
+
 
 //	alert(document.cookie);
 }
@@ -185,11 +190,12 @@ function saveLvl(){
 function loadLvl(){
 	var str = getCookie("levels");
 	if (str == undefined || str.length != NUMPOSITION){
-		alert("Сохраните свой набор войск");
-	} else {		
+//		alert("Сохраните свой набор войск");
+		saveLvl();
+	}	else {
+		document.getElementById("myarmybutton").style.display = "block";
+	}
 		lvl = str.split("");
-	};
-	
 }
 
 //
