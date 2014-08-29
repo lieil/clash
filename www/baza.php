@@ -158,7 +158,7 @@ $army  = array(
 					'space' => 0,
 				),
 			);
-
+/*
 $selectArmy = array();
 for($i=0; $i<20; $i++){
 	$selectArmy[$i] = array (	'key' => $army[$i]['key'],
@@ -169,5 +169,5 @@ for($i=0; $i<20; $i++){
 }
 			
 echo json_encode($selectArmy);
-			
+*/			
 ?>
