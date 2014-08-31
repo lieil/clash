@@ -12,127 +12,40 @@ require_once './baza.php';
 	<meta http-equiv="Cache-Control" content="no-cache">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <style>
-.reset    {margin:0;padding:0;}
-.clear    {clear:both;}
-.cleared:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
-.right    {float:right;}
-.left    {float:left;}
-a img    {border:0;}
-img        {max-width:100%;}
-header, nav, section, article, aside, footer {display:block;}
-body    {margin:0;padding:0;}
-    </style>
+
+<script type="text/javascript">
+	var set = <?php echo $script; ?> 
+	var NUMPOSITION = <?php echo $NUMPOSITION; ?>;
+</script>
 <script type="text/javascript" src="./script/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="./script/position.js"></script>
 </head>
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
-	
     <nav></nav>
+	<script>
+	alert(NUMPOSITION);
+	</script>
 	<div class="maindiv shadow">
 		<div id="armyset">
-<?php
-for($i=0; $i<20; $i++){
-print "<div id='s' . $army[$i]['key'] . class='iteminset'><img src='./img/barbarian.png'/>
-                         <div class='cross'>o</div>
-                         <div class='lvl'></div><input class = 'num'/>
-                    </div>";
-/*	$selectArmy[$i] = array (	'key' => $army[$i]['key'],
-							'cost' => $army[$i]['cost'],
-							'costd' => $army[$i]['costd'],
-							'space' => $army[$i]['space'],
-	);*/
-}
-
-echo "
-
-"
-?>
-<!--				<div id="s1" class="iteminset"><img src="./img/barbarian.png"/>
-                         <div class="cross">x</div>
-                         <div class="lvl"></div><input class = "num"/>
-                    </div>
-				<div id="s2" class="iteminset"><img src="./img/archer.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s3" class="iteminset"><img src="./img/goblin.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s4" class="iteminset"><img src="./img/giant.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s5" class="iteminset"><img src="./img/wallbreaker.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s6" class="iteminset"><img src="./img/balloon.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s7" class="iteminset"><img src="./img/wizard.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s8" class="iteminset"><img src="./img/healer.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div>
-					<input class = "num"/>
-				</div>
-				<div id="s9" class="iteminset"><img src="./img/dragon.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s10" class="iteminset"><img src="./img/pekka.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s11" class="iteminset"><img src="./img/minion.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s12" class="iteminset"><img src="./img/hogg.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s13" class="iteminset"><img src="./img/valkyrie.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s14" class="iteminset"><img src="./img/golem.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s15" class="iteminset"><img src="./img/witch.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s16" class="iteminset"><img src="./img/lightingspell.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s17" class="iteminset"><img src="./img/healingspell.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s18" class="iteminset"><img src="./img/ragespell.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s19" class="iteminset"><img src="./img/jumpspell.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div>
-				<div id="s20" class="iteminset"><img src="./img/freezespell.png">
-					<div class = "cross">x</div>
-					<div class="lvl"></div><input class = "num"/>
-				</div> -->
+			<?php
+			for($i=0; $i<$NUMPOSITION; $i++){
+				echo "<div id='s" . $army[$i]['key'] . "' class='iteminset'><img src='" . $army[$i]['img'] . "'/>
+									 <div class='cross'>x</div>
+									 <div class='lvl'></div><input class = 'num'/>
+								</div>";
+			}
+			?>
 		</div> 
 		<div class="container">
 			<div id="armychoice">
+				<?php
+				for($i=0; $i<$NUMPOSITION; $i++){
+					echo "<div id='a" . $army[$i]['key'] . "' class='itemtochoose'><img src='" . $army[$i]['img'] . "'/>
+									</div>";
+				}
+			?>
+<!--			
 				<div id="a1" class="itemtochoose"><img src="./img/barbarian.png"></div>
 				<div id="a2" class="itemtochoose"><img src="./img/archer.png"></div>
 				<div id="a3" class="itemtochoose"><img src="./img/goblin.png"></div>
@@ -153,6 +66,7 @@ echo "
 				<div id="a18" class="itemtochoose"><img src="./img/ragespell.png"></div>
 				<div id="a19" class="itemtochoose"><img src="./img/jumpspell.png"></div>
 				<div id="a20" class="itemtochoose"><img src="./img/freezespell.png"></div>
+				-->
 			</div>
 		</div>
 		<div id="rules">

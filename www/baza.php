@@ -51,12 +51,20 @@ $army  = array(
 					'cost' => array (2000,2500,3000,3500,4000,4500),
 					'space' => 5,
 				),
-			array(	'key' => '7', 
+/*			array(	'key' => '7', 
 					'name' => 'wizard',
 					'img' => './img/wizard.png',
 					'dps' => array (50,70,90,125,170,180),
 					'xp' => array (75,90,108,130,156,164),
 					'cost' => array (1500,2000,2500,3000,3500,4000),
+					'space' => 4,
+				), */
+				array(	'key' => '7', 
+					'name' => 'wizard',
+					'img' => './img/wizard-a.png',
+					'dps' => array (50,70,90,125,170,180),
+					'xp' => array (75,90,108,130,156,164),
+					'cost' => array (750,1000,1250,1500,1750,2000),
 					'space' => 4,
 				),
 			array(	'key' => '8', 
@@ -126,7 +134,7 @@ $army  = array(
 				),
 			array(	'key' => '16', 
 					'name' => 'lighting spell',
-					'img' => './img/lighingspell.png',
+					'img' => './img/lightingspell.png',
 					'dps' => array (300,330,360,390,420,450),
 					'xp' => array (0,0,0,0,0,0),
 					'cost' => array (15000,16500,18000,20000,22000,24000),
@@ -158,16 +166,38 @@ $army  = array(
 					'space' => 0,
 				),
 			);
-/*
-$selectArmy = array();
-for($i=0; $i<20; $i++){
-	$selectArmy[$i] = array (	'key' => $army[$i]['key'],
-							'cost' => $army[$i]['cost'],
-							'costd' => $army[$i]['costd'],
-							'space' => $army[$i]['space'],
-	);
-}
+
+$NUMPOSITION = count($army);		
 			
-echo json_encode($selectArmy);
-*/			
+ function selectArmy(){
+	global $army;
+	$selectArmy = array();
+	for($i=0; $i<20; $i++){
+		$selectArmy[$i] = array ('key' => $army[$i]["key"],
+								'cost' => $army[$i]["cost"],
+								'costd' => $army[$i]["costd"],
+								'space' => $army[$i]["space"],
+		);
+	}
+				
+	return json_encode($selectArmy);
+}; 
+
+$script = selectArmy();
+			
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

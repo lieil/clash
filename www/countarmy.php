@@ -1,6 +1,4 @@
 <?php
-//require('../baza.php');
-
-
-
+require('../baza.php');
+echo selectArmy();
 ?>

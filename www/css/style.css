@@ -1,3 +1,14 @@
+.reset    {margin:0;padding:0;}
+.clear    {clear:both;}
+.cleared:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.right    {float:right;}
+.left    {float:left;}
+a img    {border:0;}
+img        {max-width:100%;}
+header, nav, section, article, aside, footer {display:block;}
+body    {margin:0;padding:0;}
+
+
 body{
 background: url("../img/bg-hogg.png")no-repeat 0px 600px;
 font-family: verdana, arial, sans-serif; 

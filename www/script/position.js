@@ -1,48 +1,45 @@
-var set = []; //набор свойств юнитов
 var maxlvl = []; // максимальные уровни войск
 var lvl = []; //уровни войск посетителя
-var NUMPOSITION = 20; // число типов юнитов в игре
 var	newLvl = 0; //переменная для установки нового уровня юнита
 window.onbeforeunload = saveLvl;
 
 // jQuery 
 $(document).ready(function(){
-// получаем данные о войске с сервера 
-// все эти данные будут загружаться через php при динамическом формировании страницы, и тогда не нужны будут запаздывания
-	$.get("baza.php",  function(data){
-//		$("#resultCost").html(data);
-		set = $.parseJSON(data);
-		NUMPOSITION = set.length;
-		for(var i=0; i<NUMPOSITION; i++){
-				if(set[i].cost){
-					maxlvl[i] = set[i].cost.length;
-				} else if (set[i].costd){
-					maxlvl[i] = set[i].costd.length;
-				} else {
-//					alert("Ой, уровень какой-то непонятный...");
-				}
-		}
-	});
-
-//получаем данные об индивидуальных настройках с сервера (пока только из куки)
-//	lvl = [3,4,3,4,4,4,4,2,3,0,1,1,0,0,0,3,4,3,0,0]; //пока так, но как раз здесь должно использоваться jquery
-	loadLvl(); 
-/*	$.get("member.php", function(data){
-		
-	});*/
-
-//устанавливается значение атрибутов для полей ввода численности
-	$(".num").attr({"value":"", "type":"text", "size":"7", "step":"1"});
-	resetNum();
-	$(".num").change(function(){
-		if (!isNumeric($(this).val())){ 
-			alert("Введите число воинов данного типа. Цифрами, пожалуйста!");
-			$(this).val("");
-		}
+	setMaxLvl(); // устанавливаем массив максимальных уровней юнитов
+	loadLvl(); // загружаем пользовательские установки уровней юнитов
+	
+	drawStarDivs(); //добавляем блоки уровней
+	drawNumDivs();	// добавляем блоки для задания численности
+	
+    $(".cross").click(function(){	// при нажатии крестика на верхней картинке юнит удаляется из активного набора
+        $(this.parentNode).animate({ opacity: "hide" }, "slow", hideItemBlock(this.parentNode));
 		countArmy();
+    });
+	
+	$(".itemtochoose").click(function(){	// при нажатии кнопки на нижней панели юнит добавляется в активный набор.
+		showItemBlock(this);
 	});
-//устанавливаем звездочки уровня
-	setTimeout(function(){
+	
+// ставим подпись
+	$("#sign").html('Жду ваших замечаний и предложений по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
+	
+});
+
+// прописываем массив максимальных уровней
+function setMaxLvl(){
+	for(var i=0; i<NUMPOSITION; i++){
+		if(set[i].cost){
+			maxlvl[i] = set[i].cost.length;
+		} else if (set[i].costd){
+			maxlvl[i] = set[i].costd.length;
+		} else {
+			alert("Ой, уровень какой-то непонятный...");
+		}
+	}
+}
+
+//устанавливаем блоки со звездочками уровня
+function drawStarDivs(){
 		var strLvl = "";
 		if (maxlvl.length == NUMPOSITION){
 			for(var i = 1; i < NUMPOSITION+1; i++){
@@ -59,30 +56,21 @@ $(document).ready(function(){
 		} else { 
 //			alert ("ошибка загрузки данных об уровне войск");
 		}
-	// при нажатии звездочки устанавливается новый уровень юнита 
-		$(".star").click(setLvl);
-	},1000);
+		$(".star").click(setLvl); 	// при нажатии звездочки устанавливается новый уровень юнита 
+}
 
-
-// при нажатии крестика на верхней картинке картинка прячется 
-// и выполняются другие скрытые действия, удаляющие юнит из активного набора
-    $(".cross").click(function(){
-        $(this.parentNode).animate({ opacity: "hide" }, "slow", hideItemBlock(this.parentNode));
+//устанавливается значение атрибутов для полей ввода численности
+function drawNumDivs(){
+	$(".num").attr({"value":"", "type":"text", "size":"7", "step":"1"});
+	resetNum();
+	$(".num").change(function(){
+		if (!isNumeric($(this).val())){ 
+			alert("Введите число воинов данного типа. Цифрами, пожалуйста!");
+			$(this).val("");
+		}
 		countArmy();
-    });
-	
-// при нажатии кнопки на нижней панели открывается картинка на верхней
-// и прочие действия, добавляющие юнит в активный набор.
-	$(".itemtochoose").click(function(){
-		showItemBlock(this);
 	});
-	
-// ставим подпись
-	$("#sign").html('Жду ваших замечаний и предложений по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
-	
-});
-
-
+}
 
 // пересчитываем цену войска и выводим результат в нужные клеточки
 function countArmy(){
@@ -114,12 +102,14 @@ function showItemBlock(elem){
 	var key = "s" + elem.id.substr(1,2);
 	var el = document.getElementById(key);
 	document.getElementById("rules").style.display = "none";
+	el.className = el.className.replace(" open", " ") + ' open';
 	el.className = el.className.replace(" closed", " ") + ' open';
 	numElem = $(el).find(".num");
 	numElem.focus();
 }
 // спрятать блок юнита
 function hideItemBlock(elem){
+	elem.className = elem.className.replace(" closed", " ") + " closed";
 	elem.className = elem.className.replace(" open", " ") + " closed";
 	$(elem).children(".num").val("");
 }
@@ -132,7 +122,7 @@ function resetNum(){
 	$("#resultSpace").html("<span>Занимает места: </span> 0");
 }
 
-// показать блоки юнитов начиная с уровня limit
+// показать блоки юнитов, имеющих уровень больший или равный limit
 function showArmy(limit){
 	var key=0;
 	$(".iteminset").each(function(){
@@ -173,7 +163,7 @@ function saveLvl(){
 	var str = "";
 	for(i=0; i<NUMPOSITION; i++){
 	
-		if(!isNumeric(lvl[i])|| lvl[i]<0 || lvl[i]>10){
+		if(!isNumeric(lvl[i])|| lvl[i]<0 || lvl[i]>9){
 			lvl[i] = 0;
 		}
 		str += lvl[i];
