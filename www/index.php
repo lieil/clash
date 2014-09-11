@@ -23,9 +23,6 @@ require_once './baza.php';
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
     <nav></nav>
-	<script>
-	alert(NUMPOSITION);
-	</script>
 	<div class="maindiv shadow">
 		<div id="armyset">
 			<?php
@@ -45,28 +42,6 @@ require_once './baza.php';
 									</div>";
 				}
 			?>
-<!--			
-				<div id="a1" class="itemtochoose"><img src="./img/barbarian.png"></div>
-				<div id="a2" class="itemtochoose"><img src="./img/archer.png"></div>
-				<div id="a3" class="itemtochoose"><img src="./img/goblin.png"></div>
-				<div id="a4" class="itemtochoose"><img src="./img/giant.png"></div>
-				<div id="a5" class="itemtochoose"><img src="./img/wallbreaker.png"></div>
-				<div id="a6" class="itemtochoose"><img src="./img/balloon.png"></div>
-				<div id="a7" class="itemtochoose"><img src="./img/wizard.png"></div>
-				<div id="a8" class="itemtochoose"><img src="./img/healer.png"></div>
-				<div id="a9" class="itemtochoose"><img src="./img/dragon.png"></div>
-				<div id="a10" class="itemtochoose"><img src="./img/pekka.png"></div>
-				<div id="a11" class="itemtochoose"><img src="./img/minion.png"></div>
-				<div id="a12" class="itemtochoose"><img src="./img/hogg.png"></div>
-				<div id="a13" class="itemtochoose"><img src="./img/valkyrie.png"></div>
-				<div id="a14" class="itemtochoose"><img src="./img/golem.png"></div>
-				<div id="a15" class="itemtochoose"><img src="./img/witch.png"></div>
-				<div id="a16" class="itemtochoose"><img src="./img/lightingspell.png"></div>
-				<div id="a17" class="itemtochoose"><img src="./img/healingspell.png"></div>
-				<div id="a18" class="itemtochoose"><img src="./img/ragespell.png"></div>
-				<div id="a19" class="itemtochoose"><img src="./img/jumpspell.png"></div>
-				<div id="a20" class="itemtochoose"><img src="./img/freezespell.png"></div>
-				-->
 			</div>
 		</div>
 		<div id="rules">

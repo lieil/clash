@@ -1,7 +1,7 @@
 var maxlvl = []; // максимальные уровни войск
 var lvl = []; //уровни войск посетителя
 var	newLvl = 0; //переменная для установки нового уровня юнита
-window.onbeforeunload = saveLvl;
+// window.onbeforeunload = saveLvl;
 
 // jQuery 
 $(document).ready(function(){
@@ -160,27 +160,33 @@ function setLvl(){
 }
 
 function saveLvl(){
+	var displ = "block";
 	var str = "";
+	var isSetLvl = 0;
 	for(i=0; i<NUMPOSITION; i++){
 	
 		if(!isNumeric(lvl[i])|| lvl[i]<0 || lvl[i]>9){
 			lvl[i] = 0;
 		}
 		str += lvl[i];
+		isSetLvl -= lvl[i];
 	}
+	if (isSetLvl == 0){
+		displ = "none";
+	} else {
+		
+	}
+	
 	setCookie("levels", str, {expires: 7});
 	window.onbeforeunload = "";
-	document.getElementById("getbutton").style.display = "block";
-	document.getElementById("myarmybutton").style.display = "block";
+	document.getElementById("getbutton").style.display = displ;
+	document.getElementById("myarmybutton").style.display = displ;
 
-
-//	alert(document.cookie);
 }
 
 function loadLvl(){
 	var str = getCookie("levels");
 	if (str == undefined || str.length != NUMPOSITION){
-//		alert("Сохраните свой набор войск");
 		saveLvl();
 	}	else {
 		document.getElementById("myarmybutton").style.display = "block";
