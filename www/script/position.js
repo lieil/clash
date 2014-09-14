@@ -3,6 +3,7 @@ var lvl = []; //уровни войск посетителя
 var	newLvl = 0; //переменная для установки нового уровня юнита
 // window.onbeforeunload = saveLvl;
 
+
 // jQuery 
 $(document).ready(function(){
 	setMaxLvl(); // устанавливаем массив максимальных уровней юнитов
@@ -102,15 +103,15 @@ function showItemBlock(elem){
 	var key = "s" + elem.id.substr(1,2);
 	var el = document.getElementById(key);
 	document.getElementById("rules").style.display = "none";
-	el.className = el.className.replace(" open", " ") + ' open';
-	el.className = el.className.replace(" closed", " ") + ' open';
+	el.className = el.className.replace(" open", "");
+	el.className = el.className.replace(" closed", "") + " open";
 	numElem = $(el).find(".num");
 	numElem.focus();
 }
 // спрятать блок юнита
 function hideItemBlock(elem){
-	elem.className = elem.className.replace(" closed", " ") + " closed";
-	elem.className = elem.className.replace(" open", " ") + " closed";
+	elem.className = elem.className.replace(" closed", "");
+	elem.className = elem.className.replace(" open", "") + " closed";
 	$(elem).children(".num").val("");
 }
 // обнуляем численность всех войск не пряча их блоки
@@ -174,11 +175,9 @@ function saveLvl(){
 	if (isSetLvl == 0){
 		displ = "none";
 	} else {
-		
+		displ = "block";
 	}
-	
 	setCookie("levels", str, {expires: 7});
-	window.onbeforeunload = "";
 	document.getElementById("getbutton").style.display = displ;
 	document.getElementById("myarmybutton").style.display = displ;
 
@@ -187,7 +186,9 @@ function saveLvl(){
 function loadLvl(){
 	var str = getCookie("levels");
 	if (str == undefined || str.length != NUMPOSITION){
+		alert("Нет печенек :( " + str);
 		saveLvl();
+		str = getCookie("levels");
 	}	else {
 		document.getElementById("myarmybutton").style.display = "block";
 	}

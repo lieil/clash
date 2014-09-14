@@ -75,17 +75,17 @@ require_once './baza.php';
 		
 	</div>
 	<div id = "signdiv">
-		<div id="sign">Elic</div>
+		<div id="sign">Ваша Elic</div>
 		
 		<div id="metr">
 			<!-- Yandex.Metrika informer -->
-<!--<a href="https://metrika.yandex.ru/stat/?id=25956385&amp;from=informer"
+<a href="https://metrika.yandex.ru/stat/?id=25956385&amp;from=informer"
 target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/25956385/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:25956385,lang:'ru'});return false}catch(e){}"/></a>
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:25956385,lang:'ru'});return false}catch(e){}"/></a> 
 <!-- /Yandex.Metrika informer -->
 
 <!-- Yandex.Metrika counter -->
-<!--<script type="text/javascript">
+<script type="text/javascript">
 (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
@@ -108,7 +108,7 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
     } else { f(); }
 })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="//mc.yandex.ru/watch/25956385" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="//mc.yandex.ru/watch/25956385" style="position:absolute; left:-9999px;" alt="" /></div></noscript> 
 <!-- /Yandex.Metrika counter -->
 		</div>
 	</div>
