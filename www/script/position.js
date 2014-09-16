@@ -43,16 +43,16 @@ function setMaxLvl(){
 function drawStarDivs(){
 		var strLvl = "";
 		if (maxlvl.length == NUMPOSITION){
-			for(var i = 1; i < NUMPOSITION+1; i++){
+			for(var i = 0; i < NUMPOSITION; i++){
 				strLvl = "";
-				for(var k = maxlvl[i-1]; k >= 0; k--){
+				for(var k = maxlvl[i]; k >= 0; k--){
 					if(k > lvl[i-1]){
 						strLvl = "<div class='star l" + k + "'>" + strLvl + "</div>";
 					} else {
 						strLvl = "<div class='star l" + k + " activ'>" + strLvl + "</div>";
 					}
 				}
-			$("#s"+i).children(".lvl").html(strLvl);
+			$("#s"+set[i].key).children(".lvl").html(strLvl);
 			}
 		} else { 
 //			alert ("ошибка загрузки данных об уровне войск");
@@ -65,7 +65,7 @@ function drawNumDivs(){
 	$(".num").attr({"value":"", "type":"text", "size":"7", "step":"1"});
 	resetNum();
 	$(".num").change(function(){
-		if (!isNumeric($(this).val())){ 
+		if (!isNumeric($(this).val()) && $(this).val() != ""){ 
 			alert("Введите число воинов данного типа. Цифрами, пожалуйста!");
 			$(this).val("");
 		}
@@ -186,7 +186,6 @@ function saveLvl(){
 function loadLvl(){
 	var str = getCookie("levels");
 	if (str == undefined || str.length != NUMPOSITION){
-		alert("Нет печенек :( " + str);
 		saveLvl();
 		str = getCookie("levels");
 	}	else {

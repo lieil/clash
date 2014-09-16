@@ -45,7 +45,7 @@ display: none;
 #buttonsleft{
 position:relative;
 top: 0px;
-left: -625px;
+left: -665px;
 height: 25px;
 width: 125px;
 }
@@ -59,7 +59,7 @@ height: 25px;
 .maindiv{
 position: absolute;
 height: 600px;
-width: 450px;
+width: 500px;
 left: 50%;
 margin-left: -400px;
 top: 100px;
@@ -95,13 +95,13 @@ height: 600px;
 width: 450px;
 left: 50%;
 top: 100px;
-margin-left: 100px;
+margin-left: 150px;
 padding-top: 100px;
 }
 #signdiv {
 position: absolute;
 bottom: 0px; 
-left:  750px;
+left:  780px;
 margin-top: 50px;
 
 } 
@@ -122,17 +122,18 @@ position: absolute;
 bottom: 5px;
 border-top: 1px solid #74879d;
 max-height: 100px;
-width: 410px;
+width: 460px;
 padding: 10px 5px 5px 5px;
 margin: 15px;
 overflow: auto;
 }
 
 #armyset {
+overflow: auto;
 position: absolute;
 top: 5px;
 height: 400px;
-width: 440px;
+width: 475px;
 padding: 10px 5px 5px 5px;
 margin: 15px;
 }
@@ -143,11 +144,12 @@ max-height:80px;
 }
 
 .iteminset{
+text-align: center;
 position: relative;
 height:102px;
 max-height:102px;
-width:70px;
-max-width:70px;
+width:80px;
+max-width:80px;
 padding:1px;
 display:none;
 margin:0 7px 7px 0;
@@ -170,7 +172,7 @@ max-height:30px;
 color:#555;
 text-align:center;
 margin: 1px;
-width: 62px;
+width: 72px;
 background-color: #fff3cd;
 -moz-border-radius: 5px; /* Äëÿ Firefox 3 */
 -webkit-border-radius: 5px; /* Äëÿ Safari 4 è Chrome */
@@ -231,13 +233,14 @@ left:-18px;
 }
 
 .l0{ 
-width: 77px;
+width: 88px;
 background: none;
 }
-.l1{ width:66px}
-.l2{ width:55px}
-.l3{ width:44px}
-.l4{ width:33px}
-.l5{ width:22px}
-.l6{ width:11px}
+.l1{ width:77px}
+.l2{ width:66px}
+.l3{ width:55px}
+.l4{ width:44px}
+.l5{ width:33px}
+.l6{ width:22px}
+.l7{ width:11px}
 
