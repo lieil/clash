@@ -46,7 +46,7 @@ function drawStarDivs(){
 			for(var i = 0; i < NUMPOSITION; i++){
 				strLvl = "";
 				for(var k = maxlvl[i]; k >= 0; k--){
-					if(k > lvl[i]){
+					if(k > lvl[i-1]){
 						strLvl = "<div class='star l" + k + "'>" + strLvl + "</div>";
 					} else {
 						strLvl = "<div class='star l" + k + " activ'>" + strLvl + "</div>";
