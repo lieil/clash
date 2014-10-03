@@ -22,9 +22,18 @@ $(document).ready(function(){
 	});   // при нажатии кнопки на нижней панели юнит добавляется в активный набор.
 	
 // ставим подпись
-	$("#sign").html('Жду ваших замечаний и предложений по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
+	$("#sign").html('Жду ваши замечания и предложения по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
 	
 });
+
+function Unit(obj) = {
+	var name = obj.name;
+	var lvl = obj.lvl;
+	var cost = transpArray(obj.cost, obj.costd);
+	this.setLvl = function (){
+
+	}
+};
 
 // прописываем массив максимальных уровней
 function setMaxLvl(){
@@ -46,7 +55,7 @@ function drawStarDivs(){
 			for(var i = 0; i < NUMPOSITION; i++){
 				strLvl = "";
 				for(var k = maxlvl[i]; k >= 0; k--){
-					if(k > lvl[i-1]){
+					if(k > lvl[i]){
 						strLvl = "<div class='star l" + k + "'>" + strLvl + "</div>";
 					} else {
 						strLvl = "<div class='star l" + k + " activ'>" + strLvl + "</div>";
@@ -240,6 +249,27 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
+function transpArray(arr1,arr2){
+	var newArr = [];
+	if (arr1.length == arr2.length){
+		arrlength = arr1.length;
+		for(var i = 0; i < arrlength; i++){
+			newArr[i] = [arr1[i],arr2[i]];
+		}
+	}
+	return newArr;
+}
+
+function sumArr(arr1, arr2){
+	var newArr = [];
+	if (arr1.length == arr2.length){
+		arrlength = arr1.length;
+		for(var i = 0; i < arrlength; i++){
+			newArr[i] = arr1[i]+arr2[i];
+		}
+	}
+	return newArr;
+}
 
 // тестовая функция - показывает текущие уровни	 войск
 function showLvl(){
