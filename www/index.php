@@ -18,7 +18,7 @@ require_once './baza.php';
 	var NUMPOSITION = <?php echo $NUMPOSITION; ?>;
 </script>
 <script type="text/javascript" src="./script/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="./script/position.js"></script>
+<script type="text/javascript" src="./script/objects.js"></script>
 </head>
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
@@ -63,7 +63,7 @@ require_once './baza.php';
 		<!--	<div>Параметры юнитов:</div>-->
 			<input type="submit" id="savebutton" value = "сохранить" onclick = "saveLvl()"/><!--Сохранить уровни войск-->
 			<input type="submit" id="getbutton" value = "загрузить" onclick = "loadLvl()"/><!--загрузить сохраненные уровни войск-->
-		<!--<input type="submit" id="levelbutton" value = "показать уровни войск" onclick = "showLvl()"/><!--Показать массив уровней войск-->
+<input type="submit" id="levelbutton" value = "показать уровни войск" onclick = "showLvl()"/><!--Показать массив уровней войск-->
 
 		</div>
 		<div id="buttons">
