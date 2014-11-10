@@ -22,7 +22,19 @@ function Unit(troop, level) {
 	this.getLvl = function(){
 		return(this.lvl);
 	}
-};
+}
+
+function TroopSet(troop, level) {
+	this.name = troop.name;
+	var lvl = level;
+	this.cost = transpArray(troop.cost, troop.costd);
+	this.setLvl = function(num){
+		this.lvl = num;
+	}
+	this.getLvl = function(){
+		return(this.lvl);
+	}
+}
 
 
 //
@@ -71,7 +83,8 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-function transpArray(arr1,arr2){
+//работа с массивами
+function transpArray(arr1,arr2){ //из двух строчных массивов делает один массив объектов из пар значений
 	var newArr = [];
 	if (arr1.length == arr2.length){
 		arrlength = arr1.length;
@@ -82,7 +95,7 @@ function transpArray(arr1,arr2){
 	return newArr;
 }
 
-function sumArr(arr1, arr2){
+function sumArr(arr1, arr2){ //складывает попарно значения двух массивов
 	var newArr = [];
 	if (arr1.length == arr2.length){
 		arrlength = arr1.length;
@@ -93,7 +106,7 @@ function sumArr(arr1, arr2){
 	return newArr;
 }
 
-// тестовая функция - показывает текущие уровни	 войск
+// тестовая функция вызывает функцию test, запускается по кнопке 
 function showLvl(){
 	test();
 }

@@ -17,6 +17,19 @@ color: #74879d;
 font-size:12px;
 line-height: 24px;
 }
+
+nav{
+position: absolute;
+height: 73px;
+top: 17px;
+left: 300px;
+margin-left: 70px;
+}
+
+.nav {
+margin-left:14px;
+}
+
 #logo {
 position: absolute;
 height: 73px;
@@ -78,7 +91,7 @@ overflow-y: auto;
 z-index:10;
 }
 h1{
-font-size:18px;
+font-size:120%;
 }
 p span{
 padding: 0px 3px;

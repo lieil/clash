@@ -23,20 +23,8 @@ require_once './baza.php';
 </head>
 <body>
     <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
-    <nav><a class="nav" href="./index.php"><img src="./img/troopscalc-button.png" title = "Калькулятор стоимости войск"/></a>
-	<a class="nav"  href="./gems.php"><img src="./img/gemscalc-button.png" title = "Оценка времени появления препятствий"/></a>
-	<a class="nav"  href="./about.php"><img src="./img/myclan-button.png" title = "Мой край&nbsp;&mdash; Россия"/></a></nav>
+    <nav></nav>
 	<div class="maindiv shadow">
-		<div id="armyset">
-			<?php
-			for($i=0; $i<$NUMPOSITION; $i++){
-				echo "<div id='s" . $army[$i]['key'] . "' class='iteminset'><img src='" . $army[$i]['img'] . "'/>
-									 <div class='cross'>x</div>
-									 <div class='lvl'></div><input class = 'num'/>
-								</div>";
-			}
-			?>
-		</div> 
 		<div class="container">
 			<div id="armychoice">
 				<?php
@@ -46,17 +34,6 @@ require_once './baza.php';
 				}
 			?>
 			</div>
-		</div>
-		<div id="rules">
-			<h1>Калькулятор стоимости войск для&nbsp;игры Clash of&nbsp;Clans</h1>
-			<p>Выбери нужных юнитов на&nbsp;нижнем слайдере или нажми кнопку <span>открыть&nbsp;все&nbsp;войска</span>&nbsp;<img src="./img/miniarrowright.png"/>.</p>		
-			<p>Нажимая на&nbsp;звездочки, установи нужный уровень воина.</p>		
-			<p><img src="./img/miniarrowleft.png"/>Выставленные уровни ты&nbsp;можешь сохранить кнопкой <span>сохранить&nbsp;параметры&nbsp;войск</span>.</p> 
-			<p>Войска, для которых ты&nbsp;установишь уровень, станут доступны по&nbsp;кнопке <span>мои&nbsp;войска</span>&nbsp;<img src="./img/miniarrowright.png"/>.</p>
-			<p><img src="./img/miniarrowleft.png"/>Если ты&nbsp;изменял уровни, но&nbsp;хочешь вернуться к&nbsp;сохраненным, воспользуйся кнопкой  <span>загрузить&nbsp;параметры</span>.</p>
-			<p>В&nbsp;поле под картинкой введи численность своих войск, и&nbsp;справа появится общая стоимость твоей армии.<img src="./img/miniarrowupright.png"/></p>
-			<p>Для сброса численности (но&nbsp;не&nbsp;уровней!) войск служит кнопка <span>обнулить&nbsp;численность</span>&nbsp;<img src="./img/miniarrowright.png"/>.</p>
-			<p>И&nbsp;я&nbsp;с&nbsp;радостью рассмотрю все ваши предложения и&nbsp;пожелания! Присылайте их&nbsp;на&nbsp;адрес электронной почты справа внизу.&nbsp;<img src="./img/miniarrowdownright.png"/></p>
 		</div>
 	</div>
 	<div class = "resultdiv">

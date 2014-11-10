@@ -1,0 +1,102 @@
+body{
+background: url("../img/builder.png")no-repeat 0px 600px;
+}
+
+#maindiv{
+position: absolute;
+width: 800px;
+min-width: 500px;
+/*left: 114px;
+top: 100px;*/
+background: #ececf1;
+padding: 40px;
+}
+
+.outbar{
+position: relative;
+width: auto;
+vertical-align: middle;
+height: 36px;
+margin-top: 72px;
+padding-left:84px;
+background: #ddd;
+}
+
+.outbar img{
+height:35px;
+margin-bottom: -10px;
+width: auto;
+}
+
+.label{
+position:relative;
+width: 72px;
+left:-84px;
+top: -49px;
+padding-right: 24px;
+text-align: center;
+font-size: 10px;
+font-weight: 400;
+color: #222;
+}
+
+#gems, #time, #tree {
+min-width: 400px;
+height: 22px;
+background: url("../img/loader-bg.png") repeat-x;
+border-right: 2px solid #74879d;
+border-left: 2px solid #74879d;
+}
+
+.fill{
+position:relative;
+left:20px; 
+top:0;
+}
+
+.bar{
+position:relative;
+margin: 0px -2px;
+height:22px;
+background: url("../img/loader-time.png") repeat-x;
+width: 60px;
+display:inline-block;
+border-right: 2px solid #3a5c12;
+border-left: 2px solid #3a5c12;
+}
+
+.tap, .start, .end{
+position: absolute;
+top:-10px;
+z-index:20;
+margin: -5px -2px;
+height:40px;
+background: url("../img/tap.png") no-repeat;
+width: 15px;
+display:inline-block;
+}
+
+.start, .end{
+background: url("../img/start.png") no-repeat;
+width: 5px;
+}
+
+.num{
+position: absolute;
+top: -25px;
+left: -17px; 
+max-height:30px;
+color:#fff;
+text-align:center;
+margin: 1px;
+width: 42px;
+background-color: #5a7b80;
+-moz-border-radius: 5px; /* Для Firefox 3 */
+-webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
+border-radius: 5px; /* Для современных браузеров */
+}
+
+input.num{
+background-color: #fff3cd;
+color: #3a5c12;
+}
