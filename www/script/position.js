@@ -21,9 +21,6 @@ $(document).ready(function(){
 		showItemBlock(this);
 	});   // при нажатии кнопки на нижней панели юнит добавляется в активный набор.
 	
-// ставим подпись
-	$("#sign").html('Жду ваших замечаний и предложений по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
-	
 });
 
 // прописываем массив максимальных уровней

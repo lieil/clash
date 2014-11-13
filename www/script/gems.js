@@ -28,11 +28,7 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		reDraw(window, mainDiv);
 		});
-
-		
-// ставим подпись
-		$("#sign").html('Жду ваши замечания и предложения по адресу:<br/><a href="mailto:clash-of-clans-fans@mail.ru?subject=Вопрос%20по%20сайту">clash-of-clans-fans@mail.ru</a>');
-		
+	
 /*	$('#gems').noUiSlider({
 		start: [ 30 ],
 		connect: "lower",
@@ -46,19 +42,19 @@ $(document).ready(function(){
 	var timeCounter = new Slider(jQuery("#time"));
 	var treeCounter = new Slider(jQuery("#tree"));
 		
-	 jQuery("#gems").slider({ from: 0, to: 400, step: 1, smooth: true, round: 0, dimension: "&nbsp;gems", skin: "blue", 
+	 jQuery("#gems").slider({ from: 0, to: 100, step: 1, smooth: true, round: 0, dimension: "&nbsp;gems", skin: "blue", 
 	 callback: function( value ){ 
 		timeCounter.setNewValues(gemsToTime($("#gems").slider("value")));
-		console.log("значения в объекте timeCounter:" + timeCounter.startValue + " / " + timeCounter.endValue);
+//		console.log("значения в объекте timeCounter:" + timeCounter.startValue + " / " + timeCounter.endValue);
 		jQuery("#time").slider("value", timeCounter.startValue, timeCounter.endValue);
-		console.log("значения в слайдете time:" + jQuery("#time").slider("value"));
+//		console.log("значения в слайдете time:" + jQuery("#time").slider("value"));
 		treeCounter.setNewValues(gemsToTree($("#gems").slider("value")));
 		jQuery("#tree").slider("value", treeCounter.startValue, treeCounter.endValue);
 		}  
 	});
 	
- jQuery("#time").slider({ from: 0, to: 100, step: 1, smooth: true, round: 0, dimension: "&nbsp;days", skin: "blue" });
- jQuery("#tree").slider({ from: 0, to: 300, step: 1, smooth: true, round: 0, dimension: "&nbsp;tree", skin: "blue" });
+ jQuery("#time").slider({ from: 0, to: 30, step: 1, smooth: true, round: 0, dimension: "&nbsp;days", skin: "blue" });
+ jQuery("#tree").slider({ from: 0, to: 80, step: 1, smooth: true, round: 0, dimension: "&nbsp;tree", skin: "blue" });
 	
 });
 
@@ -72,21 +68,67 @@ $(document).ready(function(){
 // пересчеты
 SEQUENCE = [1,3,2,0,0,5,1,0,3,4,0,0,5,0,1,0,6,0,4,5];
 sumSeq = sumArrayMembers(SEQUENCE);
-workingSequence = SEQUENCE.concat(SEQUENCE);
+countOfTree = SEQUENCE.length;
 
 gemsToTime = function(gemReq){
-	var rFull = Math.floor(gemReq/40);
-	var rRemnant = gemReq%40;
-	console.log("Количество последовательностей:" + rFull + ", " + rRemnant);
-	var arrVal = [parseInt(gemReq)/40*7, parseInt(gemReq)/46*10.5];
-	console.log("результат расчетов gemsToTime" + arrVal);
+	
+	var arrVal = [Math.floor(parseInt(gemReq)/40*7), Math.floor(parseInt(gemReq)/46*10.5)];
+//	console.log("результат расчетов gemsToTime" + arrVal);
 	return arrVal;
 }
 
 gemsToTree = function(gemReq){
-	var arrVal = [parseInt(gemReq)/40*7, parseInt(gemReq)/46*10.5];
-	console.log("результат расчетов gemsToTmie" + arrVal);
+	var gFull = Math.floor(gemReq/sumSeq);
+	var gRemainder = gemReq%sumSeq;
+//console.log("число: " + gemReq + "Количество последовательностей: " + gFull + ", остаток: " + gRemainder);
+	var a = minArrayMembers(gRemainder, SEQUENCE);
+	var a1 = gFull*countOfTree + a[0] || 0;
+	var a2 = gFull*countOfTree + a[1] || (gFull+1)*countOfTree || 0;
+	var arrVal = [a1, a2];
+console.log("результат расчетов gemsToTree" + arrVal);
 	return arrVal;
+}
+
+timeToTree = function(days){
+	return Math.floor(days/10.5*46);
+}
+
+// находит минимальную и максимальную сумму заданного количества последовательных членов числового массива 
+function minmaxSumPartArray(partLength, arrayName){ 
+	var res = [sumArrayMembers(arrayName),0];
+	workingSequence = arrayName.concat(arrayName);
+	for (var i=0; i<arrayName.length; i++) {
+		var s = workingSequence.slice(i,i+partLength);
+		res[0] = min(sumArrayMembers(s),res[0]);
+		res[1] = max(sumArrayMembers(s),res[1]);
+	}
+	return res;
+}
+
+// находит минимальное число последовательных членов числового массива, составляющих нужную сумму
+function minArrayMembers(sum, arrayName){
+	var res = [arrayName.length, 0];
+	if (sum < sumArrayMembers(arrayName)){
+		workingSequence = arrayName.concat(arrayName);
+		for (var i=0; i<arrayName.length; i++) {
+			var j = rr = 0;
+//			console.log("сравниваем с: " + sum + ", старт от: " + i + "позиции")
+			while(rr < sum){
+				rr += workingSequence[i+j]; 
+//				console.log("j:" + j + "последовательность: " + workingSequence[i+j] + ", сумма: " + rr + "сравниваем с: " + sum);
+				j++;
+			}
+		res[0] = min(res[0], j);	
+		res[1] = max(res[1], j);	
+//		console.log("промежуточный результат minArrayMembers: " + res);
+
+		}
+	} else {
+		alert('ой, что-то не так... Запрашивается слишком большая сумма!');
+		res = [0, arrayName.length];
+	}
+	console.log("результат minArrayMembers: " + res);
+	return res;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

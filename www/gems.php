@@ -36,13 +36,13 @@ require_once './baza.php';
 	<div id="maindiv" class="shadow">
 		<h1>Ориентировочное время получения кристаллов (gems) за&nbsp;счет уборки территории деревни от&nbsp;препятствий</h1>
 		<div class="outbar">
-			<input id="gems" type="slider" name="gems" value="100" /><div class = "label"><img src="./img/gem.png"> Кристаллы </div>
+			<input id="gems" type="slider" name="gems" value="80" /><div class = "label"><img src="./img/gem.png"> Кристаллы </div>
 		</div>
 		<div class="outbar">
-			<input id="time" type="slider" name="time" value="20;50" /><div class = "label"><img src="./img/clock.png"><br/>Время</div>
+			<input id="time" type="slider" name="time" value="20;20" /><div class = "label"><img src="./img/clock.png"><br/>Время</div>
 		</div>
 		<div class="outbar">
-			<input id="tree" type="slider" name="tree" value="60;120" /><div class = "label"><img src="./img/tree.png">Препятствия</div>
+			<input id="tree" type="slider" name="tree" value="40;40" /><div class = "label"><img src="./img/tree.png">Препятствия</div>
 		</div>
 		 
 <!--		<div class="outbar">

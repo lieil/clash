@@ -115,9 +115,13 @@ padding-top: 100px;
 #signdiv {
 position: absolute;
 bottom: 0px; 
-left:  780px;
+right: 14px;
+width: 170px;
 margin-top: 50px;
-
+font-size:10px;
+line-height: 12px;
+font-weight: 400;
+color: #000;
 } 
 
 #metr{

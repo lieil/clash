@@ -291,7 +291,7 @@
 
         value = value < $this.settings.from ? $this.settings.from : value;
         value = value > $this.settings.to ? $this.settings.to : value;
-      
+ 
         $this.o.pointers[i].set( value, true );
       }
     });
@@ -385,14 +385,14 @@
   
   jSlider.prototype.redraw = function( pointer ){
     if( !this.is.init ) return false;
-    
-    this.setValue();
-    
+
+	this.setValue();
+	
     // redraw range line
     if( this.o.pointers[0] && this.o.pointers[1] )
       this.o.value.css({ left: this.o.pointers[0].value.prc + "%", width: ( this.o.pointers[1].value.prc - this.o.pointers[0].value.prc ) + "%" });
 
-    this.o.labels[pointer.uid].value.html(
+	  this.o.labels[pointer.uid].value.html(
       this.nice(
         pointer.value.origin
       )
@@ -530,6 +530,7 @@
   
   jSlider.prototype.setValue = function(){
     var value = this.getValue();
+
     this.inputNode.attr( "value", value );
     this.onstatechange.call( this, value );
   };
