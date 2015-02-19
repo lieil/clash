@@ -11,13 +11,16 @@ require_once './baza.php';
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Cache-Control" content="no-cache">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style .css">
+
+
     <link rel="stylesheet" type="text/css" href="./css/gems.css">
     
 	<link rel="stylesheet" href="css/jslider.css" type="text/css">
 	<link rel="stylesheet" href="css/jslider.blue.css" type="text/css">
 	
 <script type="text/javascript" src="./script/jquery-2.1.1.min.js"></script>
+
 	<script type="text/javascript" src="script/jshashtable-2.1_src.js"></script>
 	<script type="text/javascript" src="script/jquery.numberformatter-1.2.3.js"></script>
 	<script type="text/javascript" src="script/tmpl.js"></script>
@@ -29,18 +32,18 @@ require_once './baza.php';
 <script type="text/javascript" src="./script/gems.js"></script>
 </head>
 <body>
-    <header><div id="logo"><img src="./img/logo-fun.png"/></div></header>
-    <nav><a class="nav" href="./index.php"><img src="./img/troopscalc-button.png" title = "Калькулятор стоимости войск"/></a>
-	<a class="nav"  href="./gems.php"><img src="./img/gemscalc-button.png" title = "Оценка времени появления препятствий"/></a>
-	<a class="nav"  href="./about.php"><img src="./img/myclan-button.png" title = "Мой край&nbsp;&mdash; Россия"/></a></nav>
+    <header><div id="logo"><img src="./img/logo-fun.png"/><a class="nav"  href="./gems.php"><img src="./img/gemscalc-button.png" title = "Оценка времени появления препятствий"/></a><a class="nav"  href="./about.php"><img src="./img/myclan-button.png" title = "Мой край&nbsp;&mdash; Россия"/></a><a class="nav" href="./index.php"><img src="./img/troopscalc-button.png" title = "Калькулятор стоимости войск"/></a></div></header>
+    <nav></nav>
 	<div id="maindiv" class="shadow">
-		<h1>Ориентировочное время получения кристаллов (gems) за&nbsp;счет уборки территории деревни от&nbsp;препятствий</h1>
+	  <h1>Ориентировочное время получения кристаллов (gems) за&nbsp;счет уборки территории деревни от&nbsp;препятствий</h1>
 		<div class="outbar">
 			<input id="gems" type="slider" name="gems" value="80" /><div class = "label"><img src="./img/gem.png"> Кристаллы </div>
 		</div>
+<!--
 		<div class="outbar">
 			<input id="time" type="slider" name="time" value="20;20" /><div class = "label"><img src="./img/clock.png"><br/>Время</div>
 		</div>
+-->
 		<div class="outbar">
 			<input id="tree" type="slider" name="tree" value="40;40" /><div class = "label"><img src="./img/tree.png">Препятствия</div>
 		</div>

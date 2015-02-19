@@ -19,6 +19,7 @@
  * 
  **/
 
+
 (function( $ ) {
   
   function isArray( value ){
@@ -61,27 +62,43 @@
 		  
 		  // do actions
 		  if( typeof action == "string" ){
-		    switch( action ){
+  		    switch( action ){
 		      case "value":
 		        if( isDef( args[ 1 ] ) && isDef( args[ 2 ] ) ){
 		          var pointers = self.getPointers();
-		          if( isDefAndNotNull( pointers[0] ) && isDefAndNotNull( args[1] ) ){
+/* new ver */
+		          if( isDefAndNotNull( pointers[0] ) && isDefAndNotNull( args[1] ) && isDefAndNotNull( pointers[1] ) && isDefAndNotNull( args[2] ) ){
+				  
+//				  self.set(args);
+/**/				  
+				  console.log("arg1: " + args[1]);
 		            pointers[0].set( args[ 1 ] );
-		            pointers[0].setIndexOver();
-		          }
-		          
-		          if( isDefAndNotNull( pointers[1] ) && isDefAndNotNull( args[2] ) ){
+
+					console.log("arg2: " + args[2]);
 		            pointers[1].set( args[ 2 ] );
-		            pointers[1].setIndexOver();
+
+		            pointers[0].setIndexOver();		            
+					pointers[1].setIndexOver();
+ //*/
 		          }
+		  console.log("arg1: " + args[1] + ", arg2: " + args[2]);
+		  console.log("val1: " + pointers[0].value.origin + ", val2: " + pointers[1].value.origin);
+ 				  self.redraw(this);			  
+
 		        }
 		        
 		        else if( isDef( args[ 1 ] ) ){
 		          var pointers = self.getPointers();
 		          if( isDefAndNotNull( pointers[0] ) && isDefAndNotNull( args[1] ) ){
 		            pointers[0].set( args[ 1 ] );
-		            pointers[0].setIndexOver();
+		            pointers[0].setIndexOver();	
+					
+					console.log("val: " + pointers[0].value.origin);
+					self.redraw(this);
 		          }
+				  
+				  
+
 		        }
 		        
 		        else
@@ -101,6 +118,7 @@
 		            pointers[1]._set( args[ 2 ] );
 		            pointers[1].setIndexOver();
 		          }
+				self.redraw(this);  
 		        }
 
 		        else if( isDef( args[ 1 ] ) ){
@@ -108,6 +126,7 @@
 		          if( isDefAndNotNull( pointers[0] ) && isDefAndNotNull( args[1] ) ){
 		            pointers[0]._set( args[ 1 ] );
 		            pointers[0].setIndexOver();
+					self.redraw(this);
 		          }
 		        }
 
@@ -282,26 +301,29 @@
       this.domNode.addDependClass("limitless");
 
     this.domNode.find(OPTIONS.selector + "pointer").each(function( i ){
+	
       var value = $this.settings.value.split(";")[i];
       if( value ){
         $this.o.pointers[i] = new jSliderPointer( this, i, $this );
 
-        var prev = $this.settings.value.split(";")[i-1];
-        if( prev && new Number(value) < new Number(prev) ) value = prev;
+       var prev = $this.settings.value.split(";")[i-1];
+       if( prev && new Number(value) < new Number(prev) ) value = prev;
 
         value = value < $this.settings.from ? $this.settings.from : value;
         value = value > $this.settings.to ? $this.settings.to : value;
- 
+		
         $this.o.pointers[i].set( value, true );
+		$this.redraw(this);
       }
     });
     
     this.o.value = this.domNode.find(".v");
     this.is.init = true;
     
-    $.each(this.o.pointers, function(i){
+//   $.each(this.o.pointers, function(i){           ----- поправка1
       $this.redraw(this);
-    });
+
+//    });											----- поправка1
     
     (function(self){
       $(window).resize(function(){
@@ -355,9 +377,9 @@
 		  domOffset: this.domNode.offset()
 		};
 
-    $.each(this.o.pointers, function(i){
+ //   $.each(this.o.pointers, function(i){		----- поправка2
       self.redraw(this);
-    });
+ //   });										----- поправка2
   };
   
   jSlider.prototype.update = function(){
@@ -383,24 +405,30 @@
     return Math.round( x*10 ) / 10;
   };
   
-  jSlider.prototype.redraw = function( pointer ){
+  jSlider.prototype.redraw = function(){ // pointer ){		----- поправка3
     if( !this.is.init ) return false;
-
+	
+	var ddd = (this.o.pointers[1]) ? ", " + this.o.pointers[1].value.origin : ""
+	console.log("вызывается setValue в функции redraw: " + this.o.pointers[0].value.origin + ddd);
 	this.setValue();
 	
     // redraw range line
     if( this.o.pointers[0] && this.o.pointers[1] )
       this.o.value.css({ left: this.o.pointers[0].value.prc + "%", width: ( this.o.pointers[1].value.prc - this.o.pointers[0].value.prc ) + "%" });
 
-	  this.o.labels[pointer.uid].value.html(
-      this.nice(
-        pointer.value.origin
-      )
-    );
+    self = this;
+    $.each(this.o.pointers, function(i){
+	  self.o.labels[i].value.html(
+      self.nice(
+        self.o.pointers[i].value.origin
+		  )
+		);
+	  });
     
     // redraw position of labels
-    this.redrawLabels( pointer );
-
+    $.each(this.o.pointers, function(i){
+      self.redrawLabels( self.o.pointers[i] );
+    });
   };
   
   jSlider.prototype.redrawLabels = function( pointer ){
@@ -443,7 +471,7 @@
       switch( pointer.uid ){
         case 0:
           if( sizes.border+sizes.label / 2 > another_label.o.offset().left-this.sizes.domOffset.left ){
-  //          another_label.o.css({ visibility: "hidden" });
+            another_label.o.css({ visibility: "hidden" });
         	  another_label.value.html( this.nice( another.value.origin ) );
 
           	label.o.css({ visibility: "visible" });
@@ -530,7 +558,7 @@
   
   jSlider.prototype.setValue = function(){
     var value = this.getValue();
-
+	console.log("setValue" + value); //------------------------------------------------------- setValue почему дважды???
     this.inputNode.attr( "value", value );
     this.onstatechange.call( this, value );
   };
@@ -657,6 +685,7 @@
 	jSliderPointer.prototype.onmousemove = function( evt, x ){
 	  var coords = this._getPageCoords( evt );
 	  this._set( this.calc( coords.x ) );
+	  this.parent.redraw(this);
 	};
 	
 	jSliderPointer.prototype.onmouseup = function( evt ){
@@ -684,18 +713,27 @@
 	  return x;
 	};
 
+	jSlider.prototype.set = function( value, opt_origin ){
+	  $.each(this.o.pointers, function() {this.value.origin = this.parent.round(value);
+	  console.log("set-slider" + this.value.origin);
+	  this._set( this.parent.valueToPrc( value, this ), opt_origin );
+	  });
+	};
+	
 	jSliderPointer.prototype.set = function( value, opt_origin ){
 	  this.value.origin = this.parent.round(value);
+	  console.log("set-pointer" + this.value.origin);
 	  this._set( this.parent.valueToPrc( value, this ), opt_origin );
 	};
 	
 	jSliderPointer.prototype._set = function( prc, opt_origin ){
 	  if( !opt_origin )
 	    this.value.origin = this.parent.prcToValue(prc);
+	  console.log("_set-pointer" + this.value.origin);
 
 	  this.value.prc = prc;
 		this.ptr.css({ left: prc + "%" });
-	  this.parent.redraw(this);
+//	  this.parent.redraw(this);
 	};
   
 })(jQuery);

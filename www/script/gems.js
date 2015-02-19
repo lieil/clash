@@ -46,8 +46,8 @@ $(document).ready(function(){
 	 callback: function( value ){ 
 		timeCounter.setNewValues(gemsToTime($("#gems").slider("value")));
 //		console.log("значения в объекте timeCounter:" + timeCounter.startValue + " / " + timeCounter.endValue);
-		jQuery("#time").slider("value", timeCounter.startValue, timeCounter.endValue);
-//		console.log("значения в слайдете time:" + jQuery("#time").slider("value"));
+//		jQuery("#time").slider("value", timeCounter.startValue, timeCounter.endValue);
+//		console.log("значения в слайдере  time:" + jQuery("#time").slider("value"));
 		treeCounter.setNewValues(gemsToTree($("#gems").slider("value")));
 		jQuery("#tree").slider("value", treeCounter.startValue, treeCounter.endValue);
 		}  
@@ -63,12 +63,13 @@ $(document).ready(function(){
 //    используемые функции   //
 ///////////////////////////////
 
-
 ///////////////////////////////////////////////////////////////////////////////////
 // пересчеты
-SEQUENCE = [1,3,2,0,0,5,1,0,3,4,0,0,5,0,1,0,6,0,4,5];
-sumSeq = sumArrayMembers(SEQUENCE);
-countOfTree = SEQUENCE.length;
+var SEQ = {};
+SEQ.SEQUENCE = new Array(1,3,2,0,0,5,1,0,3,4,0,0,5,0,1,0,6,0,4,5);
+SEQ.sumSeq = sumArrayMembers(SEQ.SEQUENCE);
+SEQ.countOfTree = SEQ.SEQUENCE.length;
+
 
 gemsToTime = function(gemReq){
 	
@@ -78,12 +79,12 @@ gemsToTime = function(gemReq){
 }
 
 gemsToTree = function(gemReq){
-	var gFull = Math.floor(gemReq/sumSeq);
-	var gRemainder = gemReq%sumSeq;
+	var gFull = Math.floor(gemReq/SEQ.sumSeq);
+	var gRemainder = gemReq%SEQ.sumSeq;
 //console.log("число: " + gemReq + "Количество последовательностей: " + gFull + ", остаток: " + gRemainder);
-	var a = minArrayMembers(gRemainder, SEQUENCE);
-	var a1 = gFull*countOfTree + a[0] || 0;
-	var a2 = gFull*countOfTree + a[1] || (gFull+1)*countOfTree || 0;
+	var a = minArrayMembers(gRemainder, SEQ.SEQUENCE);
+	var a1 = gFull*SEQ.countOfTree + a[0] || 0;
+	var a2 = gFull*SEQ.countOfTree + a[1] || (gFull+1)*SEQ.countOfTree || 0;
 	var arrVal = [a1, a2];
 console.log("результат расчетов gemsToTree" + arrVal);
 	return arrVal;
